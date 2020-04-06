@@ -3,3 +3,4 @@ rpg
 *.o
 libmy.a
 my_rpg
+.vscode

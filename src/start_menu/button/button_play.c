@@ -49,7 +49,7 @@ int create_sprite_play_off(smenu_t *sm)
     return (0);
 }
 
-void update_button_play(smenu_t *sm)
+void update_button_play(smenu_t *sm, rpg_t *rpg)
 {
     sfVector2i mp = sfMouse_getPositionRenderWindow(sm->win);
     sfFloatRect play_rect = sfSprite_getGlobalBounds(sm->play_on.sprite);
@@ -57,7 +57,7 @@ void update_button_play(smenu_t *sm)
     if (sfFloatRect_contains(&play_rect, (float)mp.x, (float)mp.y)) {
         sm->play_off.boulen_button = 1;
         if (sfMouse_isButtonPressed(sfMouseLeft))
-            sm->bool = sfFalse;
+            rpg->scene = 1;
     } else
         sm->play_off.boulen_button = 0;
 }

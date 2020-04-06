@@ -37,11 +37,7 @@ void game_loop(rpg_t *rpg)
 void main_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window.window)) {
-        if (rpg->smenu->bool) {
-            menu_loop(rpg);
-            continue;
-        }
-        game_loop(rpg);
+        scenes[rpg->scene](rpg);
     }
     sfRenderWindow_destroy(rpg->window.window);
 }

@@ -35,7 +35,7 @@
     void move_parallax(smenu_t *smenu);
     void move_hrect(sfIntRect *rectangle, int offset, int max_value);
     void move_vrect(sfIntRect *rectangle, int offset, int max_value);
-    void update_button_play(smenu_t *smenu);
+    void update_button_play(smenu_t *smenu, rpg_t *rpg);
     void update_button_save(smenu_t *smenu);
     void update_button_how_to_play(smenu_t *smenu);
     void update_button_quit(smenu_t *smenu);

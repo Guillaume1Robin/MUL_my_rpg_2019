@@ -79,7 +79,6 @@
         button_t quit_off;
         button_t htp_on;
         button_t htp_off;
-        sfBool bool;
     } smenu_t;
 
     typedef struct rpg_s

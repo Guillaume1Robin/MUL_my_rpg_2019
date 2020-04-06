@@ -28,7 +28,6 @@ smenu_t *create_menu(void)
     smenu->save_on.boulen_button = 0;
     smenu->htp_on.boulen_button = 0;
     smenu->quit_on.boulen_button = 0;
-    smenu->bool = sfTrue;
     return (smenu);
 }
 
@@ -56,7 +55,7 @@ void menu_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_pollEvent(rpg->smenu->win, &rpg->smenu->event)) {
         open_close_events(&rpg->smenu->event, rpg->smenu->win);
-        update_button_play(rpg->smenu);
+        update_button_play(rpg->smenu, rpg);
         update_button_save(rpg->smenu);
         update_button_quit(rpg->smenu);
         update_button_how_to_play(rpg->smenu);
