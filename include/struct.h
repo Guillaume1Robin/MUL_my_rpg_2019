@@ -74,4 +74,6 @@
 
     void clock_move_rect_player(rpg_t *rpg);
 
+    sfIntRect move_init2(smenu_t *smenu);
+
 #endif

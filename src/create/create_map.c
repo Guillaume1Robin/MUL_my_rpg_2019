@@ -16,5 +16,6 @@ int create_map(rpg_t *rpg)
     }
     rpg->map.sprite = sfSprite_create();
     sfSprite_setTexture(rpg->map.sprite, rpg->map.texture, sfTrue);
+    sfSprite_setPosition(rpg->map.sprite, rpg->map.pos);
     return (0);
 }
