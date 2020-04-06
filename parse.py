@@ -12,5 +12,5 @@ except:
 f.write(str(maprpg['layers'][1]['width']) + ' ' + str(maprpg['layers'][1]['height']) + '\n')
 for layer in maprpg['layers']:
     if layer['name'] == 'collision':
-        for elem in maprpg['layers'][1]['data']:
+        for elem in layer['data']:
             f.write(str(elem) + ' ')
