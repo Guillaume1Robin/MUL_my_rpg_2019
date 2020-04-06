@@ -43,12 +43,3 @@ sfIntRect move_init2(smenu_t *smenu)
     smenu->sprite_rect.height = 1080;
     return (smenu->sprite_rect);
 }
-
-void create_parallax_5(smenu_t *smenu)
-{
-    smenu->para5.texture = sfTexture_createFromFile("assets/parallax/5.png", NULL);
-    smenu->para5.sprite = sfSprite_create();
-    sfSprite_setTexture(smenu->para5.sprite, smenu->para5.texture, sfTrue);
-    sfSprite_setPosition(smenu->para1.sprite, smenu->para5.pos);
-    smenu->para5.rect = move_init2(smenu);
-}
