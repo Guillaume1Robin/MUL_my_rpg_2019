@@ -53,20 +53,20 @@ void display_button(smenu_t *smenu)
         sfRenderWindow_drawSprite(smenu->win, smenu->quit_off.sprite, NULL);
 }
 
-void menu_loop(smenu_t *smenu)
+void menu_loop(rpg_t *rpg)
 {
-    while (sfRenderWindow_pollEvent(smenu->win, &smenu->event)) {
-        open_close_events(&smenu->event, smenu->win);
-        init_button_play(smenu);
-        init_button_save(smenu);
-        init_button_quit(smenu);
-        init_button_how_to_play(smenu);
+    while (sfRenderWindow_pollEvent(rpg->smenu->win, &rpg->smenu->event)) {
+        open_close_events(&rpg->smenu->event, rpg->smenu->win);
+        update_button_play(rpg->smenu);
+        update_button_save(rpg->smenu);
+        update_button_quit(rpg->smenu);
+        update_button_how_to_play(rpg->smenu);
     }
-    move_parallax(smenu);
-    sfRenderWindow_clear(smenu->win, sfBlack);
-    draw_parallax(smenu);
-    display_button(smenu);
-    sfRenderWindow_display(smenu->win);
+    move_parallax(rpg->smenu);
+    sfRenderWindow_clear(rpg->smenu->win, sfBlack);
+    draw_parallax(rpg->smenu);
+    display_button(rpg->smenu);
+    sfRenderWindow_display(rpg->smenu->win);
 }
 
 // void start_menu(void)
@@ -80,10 +80,10 @@ void menu_loop(smenu_t *smenu)
 //         while (sfRenderWindow_pollEvent(smenu->win, &smenu->event))
 //             open_close_events(&smenu->event, smenu->win);
 //         move_parallax(smenu);
-//         init_button_play(smenu);
-//         init_button_save(smenu);
-//         init_button_quit(smenu);
-//         init_button_how_to_play(smenu);
+//         update_button_play(smenu);
+//         update_button_save(smenu);
+//         update_button_quit(smenu);
+//         update_button_how_to_play(smenu);
 //         sfRenderWindow_clear(smenu->win, sfBlack);
 //         sfRenderWindow_drawSprite(smenu->win, smenu->sky.sprite, NULL);
 //         draw_parallax(smenu);

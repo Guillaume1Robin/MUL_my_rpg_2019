@@ -2,51 +2,35 @@
 ** EPITECH PROJECT, 2019
 ** MUL_my_rpg_2019
 ** File description:
-** rpg.h
+** prototypes.h
 */
 
-#ifndef START_MENU_H_
-    #define START_MENU_H_
+#ifndef PROTOTYPES_H_
+    #define PROTOTYPES_H_
 
     #include "basic.h"
 
-    typedef struct button_s
-    {
-        sfTexture *texture;
-        sfSprite *sprite;
-        sfVector2f size;
-        sfVector2f pos;
-        sfIntRect rect;
-        int boulen_button;
-    } button_t;
-
-    typedef struct menu_s
-    {
-        sfTexture *texture;
-        sfSprite *sprite;
-        sfVector2f pos;
-        sfIntRect rect;
-    } menu_t;
-
-    typedef struct smenu_s{
-        sfRenderWindow *win;
-        sfEvent event;
-        sfIntRect sprite_rect;
-        menu_t sky;
-        menu_t **para;
-        button_t play_on;
-        button_t play_off;
-        button_t save_on;
-        button_t save_off;
-        button_t quit_on;
-        button_t quit_off;
-        button_t htp_on;
-        button_t htp_off;
-        sfBool bool;
-    } smenu_t;
+    int initialise_value_struct(rpg_t *rpg);
+    int create_window(rpg_t *rpg);
+    int create_map(rpg_t *rpg);
+    int create_player(rpg_t *rpg);
+    void set_movement(rpg_t *rpg);
+    void move_player_up(rpg_t *rpg);
+    void move_player_down(rpg_t *rpg);
+    void move_player_left(rpg_t *rpg);
+    void move_player_right(rpg_t *rpg);
+    void stay_still(rpg_t *rpg);
+    void create(rpg_t *rpg);
+    void display(rpg_t *rpg);
+    void main_loop(rpg_t *rpg);
+    void game_loop(rpg_t *rpg);
+    void clock_display(rpg_t *rpg);
+    void clock_player(rpg_t *rpg);
+    void clock_move_rect_player(rpg_t *rpg);
+    sfIntRect move_init2(smenu_t *smenu);
 
     //menu_principal.c
-    void menu_loop(smenu_t *smenu);
+    void menu_loop(rpg_t *rpg);
     void create_parallax(smenu_t *smenu);
     void draw_parallax(smenu_t *smenu);
     smenu_t *create_menu(void);
@@ -64,22 +48,22 @@
 
     //button_play.c
     int create_sprite_button_play_on(smenu_t *smenu);
-    void init_button_play(smenu_t *smenu);
+    void update_button_play(smenu_t *smenu);
     int create_sprite_play_off(smenu_t *smenu);
 
     //button_save.c
     int create_sprite_button_save_on(smenu_t *smenu);
     int create_sprite_save_off(smenu_t *smenu);
-    void init_button_save(smenu_t *smenu);
+    void update_button_save(smenu_t *smenu);
 
     //button_how_to_play.c
     int create_sprite_button_htp_on(smenu_t *smenu);
     int create_sprite_htp_off(smenu_t *smenu);
-    void init_button_how_to_play(smenu_t *smenu);
+    void update_button_how_to_play(smenu_t *smenu);
 
     //button_quit.c
     int create_sprite_button_quit_on(smenu_t *smenu);
     int create_sprite_quit_off(smenu_t *smenu);
-    void init_button_quit(smenu_t *smenu);
+    void update_button_quit(smenu_t *smenu);
 
 #endif

@@ -45,7 +45,7 @@ int create_sprite_quit_off(smenu_t *sm)
     return (0);
 }
 
-void init_button_quit(smenu_t *sm)
+void update_button_quit(smenu_t *sm)
 {
     sfVector2i mp = sfMouse_getPositionRenderWindow(sm->win);
     sfFloatRect quit_rect = sfSprite_getGlobalBounds(sm->quit_on.sprite);

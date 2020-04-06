@@ -2,6 +2,7 @@
     "files.associations": {
         "rpg.h": "c",
         "start_menu.h": "c",
-        "struct.h": "c"
+        "prototypes.h": "c",
+        "basic.h": "c"
     }
 }

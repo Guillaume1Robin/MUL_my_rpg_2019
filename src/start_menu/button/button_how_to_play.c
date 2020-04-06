@@ -51,7 +51,7 @@ int create_sprite_htp_off(smenu_t *sm)
     return (0);
 }
 
-void init_button_how_to_play(smenu_t *sm)
+void update_button_how_to_play(smenu_t *sm)
 {
     if (sfMouse_getPositionRenderWindow(sm->win).x >= sm->htp_on.pos.x && \
     sfMouse_getPositionRenderWindow(sm->win).x <= sm->htp_on.pos.x + 240 &&\

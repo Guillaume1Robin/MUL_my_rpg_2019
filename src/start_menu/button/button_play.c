@@ -45,7 +45,7 @@ int create_sprite_play_off(smenu_t *sm)
     return (0);
 }
 
-void init_button_play(smenu_t *sm)
+void update_button_play(smenu_t *sm)
 {
     sfVector2i mp = sfMouse_getPositionRenderWindow(sm->win);
     sfFloatRect play_rect = sfSprite_getGlobalBounds(sm->play_on.sprite);

@@ -15,6 +15,10 @@ static void (*mv_fct[5])(rpg_t *) = {
     &stay_still,
 };
 
+static void (*scenes[2])(rpg_t *) = {
+    &menu_loop,
+    &game_loop,
+};
 
 void game_loop(rpg_t *rpg)
 {
@@ -34,7 +38,7 @@ void main_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window.window)) {
         if (rpg->smenu->bool) {
-            menu_loop(rpg->smenu);
+            menu_loop(rpg);
             continue;
         }
         game_loop(rpg);

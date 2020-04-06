@@ -45,7 +45,7 @@ int create_sprite_save_off(smenu_t *sm)
     return (0);
 }
 
-void init_button_save(smenu_t *sm)
+void update_button_save(smenu_t *sm)
 {
     sfVector2i mp = sfMouse_getPositionRenderWindow(sm->win);
     sfFloatRect save_rect = sfSprite_getGlobalBounds(sm->save_on.sprite);
