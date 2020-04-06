@@ -76,4 +76,6 @@
 
     sfIntRect move_init2(smenu_t *smenu);
 
+    int **collision_parser(char const *map_path);
+
 #endif
