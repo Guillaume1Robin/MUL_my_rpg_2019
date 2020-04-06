@@ -9,8 +9,8 @@ try:
 except:
     f = open("map", "w")
 
-f.write(str(maprpg['layers'][1]['width']) + ' ' + str(maprpg['layers'][1]['height']) + '\n')
 for layer in maprpg['layers']:
     if layer['name'] == 'collision':
+            f.write(str(layer['width']) + ' ' + str(layer['height']) + '\n')
         for elem in layer['data']:
             f.write(str(elem) + ' ')
