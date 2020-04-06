@@ -52,23 +52,15 @@
     smenu_t *create_menu(void);
     void display_button(smenu_t *smenu);
 
-    //parallax_menu.c
-    void create_parallax_1(smenu_t *smenu);
-    void create_parallax_2(smenu_t *smenu);
-    void create_parallax_3(smenu_t *smenu);
-    void create_parallax_4(smenu_t *smenu);
-    void create_parallax_5(smenu_t *smenu);
-
-    //move_parallax.c
+    // move_parallax.c
     void move_parallax(smenu_t *smenu);
-    void move_rect(sfIntRect *rectangle, int offset, int max_value);
+    void move_hrect(sfIntRect *rectangle, int offset, int max_value);
+    void move_vrect(sfIntRect *rectangle, int offset, int max_value);
     sfIntRect init_rect(smenu_t *smenu);
 
     //create_parallax.c
-    void create_parallax_5(smenu_t *smenu);
     void create_parallax(smenu_t *smenu);
     void draw_parallax(smenu_t *smenu);
-    void create_sky(smenu_t *smenu);
 
     //button_play.c
     int create_sprite_button_play_on(smenu_t *smenu);

@@ -12,7 +12,9 @@ void initialise_value_struct_rpg(rpg_t *rpg)
     rpg->clock_display.clock = sfClock_create();
     rpg->clock_player.clock = sfClock_create();
     rpg->clock_move_rect_player.clock = sfClock_create();
-    rpg->bool_menu = 0;
+    rpg->scene = 0;
+    for (int i = 0; i < 5; i++)
+        rpg->mv[i] = 0;
     rpg->event = malloc(sizeof(rpg->event));
 }
 

@@ -7,16 +7,6 @@
 
 #include "rpg.h"
 
-// void create_parallax(smenu_t *smenu)
-// {
-//     create_parallax_1(smenu);
-//     create_parallax_2(smenu);
-//     create_parallax_3(smenu);
-//     // create_parallax_4(smenu);
-//     create_parallax_5(smenu);
-//     create_sky(smenu);
-// }
-
 void create_parallax(smenu_t *menu)
 {
     char *name = NULL;
@@ -32,14 +22,6 @@ void create_parallax(smenu_t *menu)
         sfSprite_setPosition(menu->para[i]->sprite, menu->para[i]->pos);
         menu->para[i]->rect = init_rect(menu);
     }
-}
-
-void create_sky(smenu_t *smenu)
-{
-    smenu->sky.texture = sfTexture_createFromFile("assets/parallax/0.png", NULL);
-    smenu->sky.sprite = sfSprite_create();
-    sfSprite_setTexture(smenu->sky.sprite, smenu->sky.texture, sfTrue);
-    sfSprite_setPosition(smenu->sky.sprite, smenu->sky.pos);
 }
 
 void draw_parallax(smenu_t *menu)

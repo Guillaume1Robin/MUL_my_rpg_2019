@@ -41,7 +41,8 @@
 
     typedef struct rpg_s
     {
-        int bool_menu;
+        int scene;
+        int mv[5];
         sfEvent *event;
         clock_rpg_t clock_display;
         clock_rpg_t clock_player;
@@ -53,27 +54,21 @@
     } rpg_t;
 
     int initialise_value_struct(rpg_t *rpg);
-
     int create_window(rpg_t *rpg);
-
     int create_map(rpg_t *rpg);
-
     int create_player(rpg_t *rpg);
-
+    void set_movement(rpg_t *rpg);
+    void move_player_up(rpg_t *rpg);
+    void move_player_down(rpg_t *rpg);
+    void move_player_left(rpg_t *rpg);
+    void move_player_right(rpg_t *rpg);
+    void stay_still(rpg_t *rpg);
     void create(rpg_t *rpg);
-
     void display(rpg_t *rpg);
-
-    void open_window(rpg_t *rpg);
-
-    void move_player(rpg_t *rpg);
-
+    void main_loop(rpg_t *rpg);
     void clock_display(rpg_t *rpg);
-
     void clock_player(rpg_t *rpg);
-
     void clock_move_rect_player(rpg_t *rpg);
-
     sfIntRect move_init2(smenu_t *smenu);
 
 #endif
