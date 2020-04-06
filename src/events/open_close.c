@@ -7,6 +7,9 @@
 
 #include "rpg.h"
 
+/*
+* Basic closing events: esc and cross
+*/
 void open_close_events(sfEvent *event, sfRenderWindow *win)
 {
     if (event->type == sfEvtClosed)

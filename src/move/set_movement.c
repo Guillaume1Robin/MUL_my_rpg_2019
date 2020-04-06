@@ -7,6 +7,11 @@
 
 #include "rpg.h"
 
+/*
+* Determines the move to be done, this allows to press the button and have the fluid movement immediatly
+If not, movement would be like "we....eeeeeeeeeeee", now it is just "weeeeeeeeee"
+* Enhanceable into "soap-like" movement: "weeeeeeeeeee- oh shit! stop moving!"
+*/
 void set_movement(rpg_t *rpg)
 {
     int mv = 0;

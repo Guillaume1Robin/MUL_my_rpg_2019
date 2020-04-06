@@ -19,6 +19,7 @@
 
     /* Menu */
     // init
+
     smenu_t *create_menu(void);
     void create_parallax(smenu_t *smenu);
     int create_sprite_button_play_on(smenu_t *smenu);
@@ -30,7 +31,9 @@
     int create_sprite_button_quit_on(smenu_t *smenu);
     int create_sprite_quit_off(smenu_t *smenu);
     sfIntRect init_rect(smenu_t *smenu);
+
     //update
+
     void menu_loop(rpg_t *rpg);
     void move_parallax(smenu_t *smenu);
     void move_hrect(sfIntRect *rectangle, int offset, int max_value);
@@ -39,23 +42,30 @@
     void update_button_save(smenu_t *smenu);
     void update_button_how_to_play(smenu_t *smenu);
     void update_button_quit(smenu_t *smenu);
+
     //display
+
     void display_button(smenu_t *smenu);
     void draw_parallax(smenu_t *smenu);
 
     /* Game */
     //player movement
+
     void set_movement(rpg_t *rpg);
     void move_player_up(rpg_t *rpg);
     void move_player_down(rpg_t *rpg);
     void move_player_left(rpg_t *rpg);
     void move_player_right(rpg_t *rpg);
     void stay_still(rpg_t *rpg);
+
     //update
+
     void main_loop(rpg_t *rpg);
     void game_loop(rpg_t *rpg);
     void clock_move_rect_player(rpg_t *rpg);
+
     //display
+
     void display(rpg_t *rpg);
 
     /* Destroy */
