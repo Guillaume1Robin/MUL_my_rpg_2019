@@ -27,7 +27,7 @@ void create_parallax_1(smenu_t *rpg)
 
 void create_parallax_2(smenu_t *rpg)
 {
-    rpg->para2.texture = sfTexture_createFromFile("assets/parallax/2eme.png", NULL);
+    rpg->para2.texture = sfTexture_createFromFile("assets/parallax/2.png", NULL);
     rpg->para2.sprite = sfSprite_create();
     sfSprite_setTexture(rpg->para2.sprite, rpg->para2.texture, sfTrue);
     sfSprite_setPosition(rpg->para2.sprite, rpg->para2.pos);
@@ -36,7 +36,7 @@ void create_parallax_2(smenu_t *rpg)
 
 void create_parallax_3(smenu_t *rpg)
 {
-    rpg->para3.texture = sfTexture_createFromFile("assets/parallax/3eme.png", NULL);
+    rpg->para3.texture = sfTexture_createFromFile("assets/parallax/3.png", NULL);
     rpg->para3.sprite = sfSprite_create();
     sfSprite_setTexture(rpg->para3.sprite, rpg->para3.texture, sfTrue);
     sfSprite_setPosition(rpg->para3.sprite, rpg->para3.pos);
@@ -45,7 +45,7 @@ void create_parallax_3(smenu_t *rpg)
 
 void create_parallax_5(smenu_t *smenu)
 {
-    smenu->para5.texture = sfTexture_createFromFile("assets/parallax/5.png", NULL);
+    smenu->para5.texture = sfTexture_createFromFile("assets/parallax/4.png", NULL);
     smenu->para5.sprite = sfSprite_create();
     sfSprite_setTexture(smenu->para5.sprite, smenu->para5.texture, sfTrue);
     sfSprite_setPosition(smenu->para1.sprite, smenu->para5.pos);

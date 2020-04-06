@@ -19,7 +19,7 @@ void create_parallax(smenu_t *smenu)
 
 void create_sky(smenu_t *smenu)
 {
-    smenu->sky.texture = sfTexture_createFromFile("assets/parallax/sky.png", NULL);
+    smenu->sky.texture = sfTexture_createFromFile("assets/parallax/0.png", NULL);
     smenu->sky.sprite = sfSprite_create();
     sfSprite_setTexture(smenu->sky.sprite, smenu->sky.texture, sfTrue);
     sfSprite_setPosition(smenu->sky.sprite, smenu->sky.pos);
@@ -27,7 +27,7 @@ void create_sky(smenu_t *smenu)
 
 void draw_parallax(smenu_t *smenu)
 {
-    // sfRenderWindow_drawSprite(smenu->win, smenu->sky.sprite, NULL);
+    sfRenderWindow_drawSprite(smenu->win, smenu->sky.sprite, NULL);
     sfRenderWindow_drawSprite(smenu->win, smenu->para1.sprite, NULL);
     sfRenderWindow_drawSprite(smenu->win, smenu->para2.sprite, NULL);
     sfRenderWindow_drawSprite(smenu->win, smenu->para3.sprite, NULL);

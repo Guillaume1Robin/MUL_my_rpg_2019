@@ -13,6 +13,7 @@ int main(void)
 
     if (!initialise_value_struct(rpg)) {
         create(rpg);
+        sleep(1);
         open_window(rpg);
         free(rpg);
         return (0);

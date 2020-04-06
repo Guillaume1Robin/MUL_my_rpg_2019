@@ -64,7 +64,6 @@ void menu_loop(smenu_t *smenu)
     }
     move_parallax(smenu);
     sfRenderWindow_clear(smenu->win, sfBlack);
-    sfRenderWindow_drawSprite(smenu->win, smenu->sky.sprite, NULL);
     draw_parallax(smenu);
     display_button(smenu);
     sfRenderWindow_display(smenu->win);
