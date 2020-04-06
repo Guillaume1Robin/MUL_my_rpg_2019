@@ -89,11 +89,11 @@ void start_menu(void)
 //     smenu_t *smenu = create_menu();
 //     sfVideoMode mode = {1920, 1080, 32};
 
-//     smenu->win = sfRenderWindow_create(mode, "RPG", sfClose, NULL);
-//     sfRenderWindow_setFramerateLimit(smenu->win, 60);
-//     while (sfRenderWindow_isOpen(smenu->win) && smenu->bool) {
-//         menu_loop(smenu);
-//     }
-//     sfRenderWindow_destroy(smenu->win);
+//     // smenu->win = sfRenderWindow_create(mode, "RPG", sfClose, NULL);
+//     // sfRenderWindow_setFramerateLimit(smenu->win, 60);
+//     // while (sfRenderWindow_isOpen(smenu->win) && smenu->bool) {
+//     //     menu_loop(smenu);
+//     // }
+//     // sfRenderWindow_destroy(smenu->win);
 //     return (0);
 // }

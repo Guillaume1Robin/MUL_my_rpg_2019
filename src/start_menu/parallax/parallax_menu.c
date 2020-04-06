@@ -43,6 +43,20 @@ void create_parallax_3(smenu_t *rpg)
     rpg->para3.rect = move_init(rpg);
 }
 
+// void create_parallax(smenu_t *menu)
+// {
+//     char *name = NULL;
+
+//     for (int i = 0; i < 5; i++) {
+//         name = my_strcat(my_strcat("assets/parallax/", my_itos(i)), ".png");
+//         menu->para.texture = sfTexture_createFromFile("assets/parallax/3eme.png", NULL);
+//         menu->para.sprite = sfSprite_create();
+//         sfSprite_setTexture(menu->para.sprite, menu->para.texture, sfTrue);
+//         sfSprite_setPosition(menu->para.sprite, menu->para.pos);
+//         menu->para.rect = move_init(menu);
+//     }
+// }
+
 // void create_parallax_4(smenu_t *rpg)
 // {
 //     rpg->para4.texture = sfTexture_createFromFile("parallax/4.png", NULL);

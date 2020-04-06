@@ -36,7 +36,7 @@ TEST_OBJ	=	$(TEST_SRC:.c=.o)
 NAME		=	my_rpg
 TEST_NAME	=	./unit-tests
 
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C ./lib/my/ > /dev/null
