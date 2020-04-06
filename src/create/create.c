@@ -9,6 +9,7 @@
 
 void create(rpg_t *rpg)
 {
+    // create_map(rpg);
     rpg->smenu = create_menu();
     rpg->smenu->win = rpg->window.window;
     create_map(rpg);
