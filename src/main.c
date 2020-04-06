@@ -1,16 +1,18 @@
 /*
 ** EPITECH PROJECT, 2019
-** CPE_lemin_2019
+** MUL_my_rpg_2019
 ** File description:
 ** main.c
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "rpg.h"
 
-int main(int argc, char const *argv[])
+int main(void)
 {
-    printf("Hello World!\n");
-    return (0);
+    rpg_t *rpg = malloc(sizeof(rpg_t));
+
+    if (!initialise_value_struct(rpg))
+    create(rpg);
+    open_window(rpg);
+    free(rpg);
 }
