@@ -13,4 +13,7 @@
     #include "start_menu.h"
     #include "my.h"
 
+    #define WIDTH 1920
+    #define HEIGHT 1080
+
 #endif

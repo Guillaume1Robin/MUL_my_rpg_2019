@@ -72,7 +72,7 @@ void menu_loop(smenu_t *smenu)
 // void start_menu(void)
 // {
 //     smenu_t *smenu = create_menu();
-//     sfVideoMode mode = {1920, 1080, 32};
+//     sfVideoMode mode = {WIDTH, HEIGHT, 32};
 
 //     smenu->win = sfRenderWindow_create(mode, "RPG", sfClose, NULL);
 //     sfRenderWindow_setFramerateLimit(smenu->win, 60);
@@ -96,7 +96,7 @@ void menu_loop(smenu_t *smenu)
 // int main(void)
 // {
 //     smenu_t *smenu = create_menu();
-//     sfVideoMode mode = {1920, 1080, 32};
+//     sfVideoMode mode = {WIDTH, HEIGHT, 32};
 
 //     // smenu->win = sfRenderWindow_create(mode, "RPG", sfClose, NULL);
 //     // sfRenderWindow_setFramerateLimit(smenu->win, 60);

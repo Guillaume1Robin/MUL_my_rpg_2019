@@ -7,14 +7,31 @@
 
 #include "rpg.h"
 
-void create_parallax(smenu_t *smenu)
+// void create_parallax(smenu_t *smenu)
+// {
+//     create_parallax_1(smenu);
+//     create_parallax_2(smenu);
+//     create_parallax_3(smenu);
+//     // create_parallax_4(smenu);
+//     create_parallax_5(smenu);
+//     create_sky(smenu);
+// }
+
+void create_parallax(smenu_t *menu)
 {
-    create_parallax_1(smenu);
-    create_parallax_2(smenu);
-    create_parallax_3(smenu);
-    // create_parallax_4(smenu);
-    create_parallax_5(smenu);
-    create_sky(smenu);
+    char *name = NULL;
+
+    menu->para = malloc(sizeof(menu_t *) * (6));
+    menu->para[5] = NULL;
+    for (int i = 0; i < 5; i++) {
+        menu->para[i] = malloc(sizeof(menu_t));
+        name = my_strcat(my_strcat("assets/parallax/", my_itos(i)), ".png");
+        menu->para[i]->texture = sfTexture_createFromFile(name, NULL);
+        menu->para[i]->sprite = sfSprite_create();
+        sfSprite_setTexture(menu->para[i]->sprite, menu->para[i]->texture, sfTrue);
+        sfSprite_setPosition(menu->para[i]->sprite, menu->para[i]->pos);
+        menu->para[i]->rect = init_rect(menu);
+    }
 }
 
 void create_sky(smenu_t *smenu)
@@ -25,21 +42,18 @@ void create_sky(smenu_t *smenu)
     sfSprite_setPosition(smenu->sky.sprite, smenu->sky.pos);
 }
 
-void draw_parallax(smenu_t *smenu)
+void draw_parallax(smenu_t *menu)
 {
-    sfRenderWindow_drawSprite(smenu->win, smenu->sky.sprite, NULL);
-    sfRenderWindow_drawSprite(smenu->win, smenu->para1.sprite, NULL);
-    sfRenderWindow_drawSprite(smenu->win, smenu->para2.sprite, NULL);
-    sfRenderWindow_drawSprite(smenu->win, smenu->para3.sprite, NULL);
-    // sfRenderWindow_drawSprite(smenu->win, smenu->para4.sprite, NULL);
-    sfRenderWindow_drawSprite(smenu->win, smenu->para5.sprite, NULL);
+    for (int i = 0; menu->para[i]; i++)
+        sfRenderWindow_drawSprite(menu->win, menu->para[i]->sprite, NULL);
 }
 
-sfIntRect move_init2(smenu_t *smenu)
+sfIntRect init_rect(smenu_t *smenu)
 {
     smenu->sprite_rect.top = 0;
     smenu->sprite_rect.left = 0;
-    smenu->sprite_rect.width = 1920;
-    smenu->sprite_rect.height = 1080;
+    smenu->sprite_rect.width = WIDTH;
+    smenu->sprite_rect.height = HEIGHT;
     return (smenu->sprite_rect);
 }
+

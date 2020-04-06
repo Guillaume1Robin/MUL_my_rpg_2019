@@ -22,7 +22,6 @@ SRC			=	src/parser.c								\
 				src/clock/clock.c							\
 				src/events/open_close.c						\
 				src/start_menu/start_menu.c					\
-				src/start_menu/parallax/parallax_menu.c		\
 				src/start_menu/parallax/move_parallax.c		\
 				src/start_menu/parallax/create_parallax.c	\
 				src/start_menu/button/button_play.c			\

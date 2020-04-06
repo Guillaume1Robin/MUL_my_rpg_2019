@@ -5,7 +5,7 @@
 ** initialise_struct_rpg.c
 */
 
-#include "struct.h"
+#include "rpg.h"
 
 void initialise_value_struct_rpg(rpg_t *rpg)
 {
@@ -18,8 +18,8 @@ void initialise_value_struct_rpg(rpg_t *rpg)
 
 int initialise_struct_window(rpg_t *rpg)
 {
-    rpg->window.mode.width = 1920;
-    rpg->window.mode.height = 1080;
+    rpg->window.mode.width = WIDTH;
+    rpg->window.mode.height = HEIGHT;
     rpg->window.mode.bitsPerPixel = 32;
     rpg->window.window = sfRenderWindow_create(rpg->window.mode,
     "MY_RPG", sfResize | sfClose, NULL);

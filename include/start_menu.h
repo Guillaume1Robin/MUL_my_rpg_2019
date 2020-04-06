@@ -32,12 +32,8 @@
         sfRenderWindow *win;
         sfEvent event;
         sfIntRect sprite_rect;
-        menu_t para1;
-        menu_t para2;
-        menu_t para3;
-        menu_t para4;
-        menu_t para5;
         menu_t sky;
+        menu_t **para;
         button_t play_on;
         button_t play_off;
         button_t save_on;
@@ -66,6 +62,7 @@
     //move_parallax.c
     void move_parallax(smenu_t *smenu);
     void move_rect(sfIntRect *rectangle, int offset, int max_value);
+    sfIntRect init_rect(smenu_t *smenu);
 
     //create_parallax.c
     void create_parallax_5(smenu_t *smenu);

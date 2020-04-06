@@ -52,10 +52,10 @@ void move_player(rpg_t *rpg)
         if (rpg->player.pos.x >= 0)
             move_player_left(rpg);
     if (sfKeyboard_isKeyPressed(sfKeyS))
-        if (rpg->player.pos.y <= 1080)
+        if (rpg->player.pos.y <= HEIGHT)
             move_player_down(rpg);
     if (sfKeyboard_isKeyPressed(sfKeyD))
-        if (rpg->player.pos.x <= 1920)
+        if (rpg->player.pos.x <= WIDTH)
             move_player_right(rpg);
     sfSprite_setPosition(rpg->player.sprite, rpg->player.pos);
 }
