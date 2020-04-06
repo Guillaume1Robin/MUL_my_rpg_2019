@@ -9,9 +9,11 @@
 
 int create_map(rpg_t *rpg)
 {
-    rpg->map.texture = sfTexture_createFromFile("assets/sprites/map1.png", NULL);
+    char *name = "assets/sprites/map1.png";
+
+    rpg->map.texture = sfTexture_createFromFile(name, NULL);
     if (!rpg->map.texture) {
-        write(2, "error missing the button\n", 26);
+        write(2, "error missing the button\n", 25);
         return (84);
     }
     rpg->map.sprite = sfSprite_create();
@@ -22,7 +24,9 @@ int create_map(rpg_t *rpg)
 
 int create_player(rpg_t *rpg)
 {
-    rpg->player.texture = sfTexture_createFromFile("assets/sprites/lama_sprite_sheet.png", NULL);
+    char *path_to_lama = "assets/sprites/lama_sprite_sheet.png";
+
+    rpg->player.texture = sfTexture_createFromFile(path_to_lama, NULL);
     if (!rpg->player.texture) {
         write(2, "error missing the button\n", 26);
         return (84);

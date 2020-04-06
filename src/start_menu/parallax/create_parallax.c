@@ -7,20 +7,20 @@
 
 #include "rpg.h"
 
-void create_parallax(smenu_t *menu)
+void create_parallax(smenu_t *sm)
 {
     char *name = NULL;
 
-    menu->para = malloc(sizeof(menu_t *) * (6));
-    menu->para[5] = NULL;
+    sm->para = malloc(sizeof(menu_t *) * (6));
+    sm->para[5] = NULL;
     for (int i = 0; i < 5; i++) {
-        menu->para[i] = malloc(sizeof(menu_t));
+        sm->para[i] = malloc(sizeof(menu_t));
         name = my_strcat(my_strcat("assets/parallax/", my_itos(i)), ".png");
-        menu->para[i]->texture = sfTexture_createFromFile(name, NULL);
-        menu->para[i]->sprite = sfSprite_create();
-        sfSprite_setTexture(menu->para[i]->sprite, menu->para[i]->texture, sfTrue);
-        sfSprite_setPosition(menu->para[i]->sprite, menu->para[i]->pos);
-        menu->para[i]->rect = init_rect(menu);
+        sm->para[i]->texture = sfTexture_createFromFile(name, NULL);
+        sm->para[i]->sprite = sfSprite_create();
+        sfSprite_setTexture(sm->para[i]->sprite, sm->para[i]->texture, sfTrue);
+        sfSprite_setPosition(sm->para[i]->sprite, sm->para[i]->pos);
+        sm->para[i]->rect = init_rect(sm);
     }
 }
 

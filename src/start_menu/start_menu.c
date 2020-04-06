@@ -11,7 +11,6 @@ smenu_t *create_menu(void)
 {
     smenu_t *smenu = malloc(sizeof(smenu_t));
 
-
     create_parallax(smenu);
     create_sprite_button_play_on(smenu);
     create_sprite_play_off(smenu);

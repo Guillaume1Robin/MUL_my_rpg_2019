@@ -9,7 +9,9 @@
 
 int create_sprite_button_save_on(smenu_t *sm)
 {
-    sm->save_on.texture = sfTexture_createFromFile("assets/buttons/save_on.png", NULL);
+    char *path_to_button = "assets/buttons/save_on.png";
+
+    sm->save_on.texture = sfTexture_createFromFile(path_to_button, NULL);
     if (!sm->save_on.texture) {
         write(2, "error missing the button\n", 26);
         return (84);
@@ -28,7 +30,9 @@ int create_sprite_button_save_on(smenu_t *sm)
 
 int create_sprite_save_off(smenu_t *sm)
 {
-    sm->save_off.texture = sfTexture_createFromFile("assets/buttons/save_off.png", NULL);
+    char *path_to_button = "assets/buttons/save_off.png";
+
+    sm->save_off.texture = sfTexture_createFromFile(path_to_button, NULL);
     if (!sm->save_off.texture) {
         write(2, "error missing the button\n", 26);
         return (84);
