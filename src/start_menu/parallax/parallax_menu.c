@@ -13,7 +13,7 @@ sfIntRect move_init(smenu_t *rpg)
     rpg->sprite_rect.left = 0;
     rpg->sprite_rect.width = 1920;
     rpg->sprite_rect.height = 1080;
-    return rpg->sprite_rect;
+    return (rpg->sprite_rect);
 }
 
 void create_parallax_1(smenu_t *rpg)

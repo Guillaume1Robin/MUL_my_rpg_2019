@@ -11,8 +11,10 @@ int main(void)
 {
     rpg_t *rpg = malloc(sizeof(rpg_t));
 
-    if (!initialise_value_struct(rpg))
-    create(rpg);
-    open_window(rpg);
-    free(rpg);
+    if (!initialise_value_struct(rpg)) {
+        create(rpg);
+        open_window(rpg);
+        free(rpg);
+        return (0);
+    }
 }
