@@ -12,17 +12,15 @@ LDFLAGS		=	-L./ -lmy -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-syste
 TEST_LDFLAGS=	-lcriterion --coverage -L./ -lmy
 SRC			=	src/parser.c								\
 				src/main.c									\
-				src/window/open_window.c					\
+				src/main_loop.c								\
 				src/initialise_value/initialise_struct_rpg.c\
 				src/create/create.c							\
-				src/create/create_map.c						\
-				src/create/create_player.c					\
 				src/display/display.c						\
 				src/move/move_player.c						\
+				src/move/set_movement.c						\
 				src/clock/clock.c							\
 				src/events/open_close.c						\
 				src/start_menu/start_menu.c					\
-				src/start_menu/parallax/parallax_menu.c		\
 				src/start_menu/parallax/move_parallax.c		\
 				src/start_menu/parallax/create_parallax.c	\
 				src/start_menu/button/button_play.c			\

@@ -7,6 +7,9 @@
 
 #include "rpg.h"
 
+/*
+* Display player and map, to be completed with enemies
+*/
 void display(rpg_t *rpg)
 {
     sfRenderWindow_clear(rpg->window.window, sfBlack);
