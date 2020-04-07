@@ -37,6 +37,7 @@
         sfTexture *texture;
         sfSprite *sprite;
         sfVector2f pos;
+        int **map;
     } map_t;
 
     typedef struct rpg_s

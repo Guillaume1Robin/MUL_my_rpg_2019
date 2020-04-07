@@ -11,7 +11,6 @@ smenu_t *create_menu(void)
 {
     smenu_t *smenu = malloc(sizeof(smenu_t));
 
-
     create_parallax(smenu);
     create_sprite_button_play_on(smenu);
     create_sprite_play_off(smenu);
@@ -69,41 +68,3 @@ void menu_loop(smenu_t *smenu)
     display_button(smenu);
     sfRenderWindow_display(smenu->win);
 }
-
-// void start_menu(void)
-// {
-//     smenu_t *smenu = create_menu();
-//     sfVideoMode mode = {1920, 1080, 32};
-
-//     smenu->win = sfRenderWindow_create(mode, "RPG", sfClose, NULL);
-//     sfRenderWindow_setFramerateLimit(smenu->win, 60);
-//     while (sfRenderWindow_isOpen(smenu->win)) {
-//         while (sfRenderWindow_pollEvent(smenu->win, &smenu->event))
-//             open_close_events(&smenu->event, smenu->win);
-//         move_parallax(smenu);
-//         init_button_play(smenu);
-//         init_button_save(smenu);
-//         init_button_quit(smenu);
-//         init_button_how_to_play(smenu);
-//         sfRenderWindow_clear(smenu->win, sfBlack);
-//         sfRenderWindow_drawSprite(smenu->win, smenu->sky.sprite, NULL);
-//         draw_parallax(smenu);
-//         display_button(smenu);
-//         sfRenderWindow_display(smenu->win);
-//     }
-//     sfRenderWindow_destroy(smenu->win);
-// }
-
-// int main(void)
-// {
-//     smenu_t *smenu = create_menu();
-//     sfVideoMode mode = {1920, 1080, 32};
-
-//     // smenu->win = sfRenderWindow_create(mode, "RPG", sfClose, NULL);
-//     // sfRenderWindow_setFramerateLimit(smenu->win, 60);
-//     // while (sfRenderWindow_isOpen(smenu->win) && smenu->bool) {
-//     //     menu_loop(smenu);
-//     // }
-//     // sfRenderWindow_destroy(smenu->win);
-//     return (0);
-// }
