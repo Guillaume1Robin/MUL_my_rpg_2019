@@ -15,7 +15,6 @@ static void (*mv_fct[5])(rpg_t *) = {
     &move_player_down,
     &move_player_left,
     &move_player_right,
-    
     &stay_still,
 };
 
