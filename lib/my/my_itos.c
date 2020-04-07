@@ -11,6 +11,8 @@ int len_number(int nb)
 {
     size_t len = 0;
 
+    if (nb == 0)
+        return (1);
     if (nb < 0) {
         len += 1;
         nb *= -1;

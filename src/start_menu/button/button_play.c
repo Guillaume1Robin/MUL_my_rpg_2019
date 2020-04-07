@@ -9,7 +9,9 @@
 
 int create_sprite_button_play_on(smenu_t *sm)
 {
-    sm->play_on.texture = sfTexture_createFromFile("assets/buttons/play_on.png", NULL);
+    char *path_to_button = "assets/buttons/play_on.png";
+
+    sm->play_on.texture = sfTexture_createFromFile(path_to_button, NULL);
     if (!sm->play_on.texture) {
         write(2, "error missing the button\n", 26);
         return (84);
@@ -28,7 +30,9 @@ int create_sprite_button_play_on(smenu_t *sm)
 
 int create_sprite_play_off(smenu_t *sm)
 {
-    sm->play_off.texture = sfTexture_createFromFile("assets/buttons/play_off.png", NULL);
+    char *path_to_button = "assets/buttons/play_off.png";
+
+    sm->play_off.texture = sfTexture_createFromFile(path_to_button, NULL);
     if (!sm->play_off.texture) {
         write(2, "error missing the button\n", 26);
         return (84);
@@ -45,7 +49,7 @@ int create_sprite_play_off(smenu_t *sm)
     return (0);
 }
 
-void init_button_play(smenu_t *sm)
+void update_button_play(smenu_t *sm, rpg_t *rpg)
 {
     sfVector2i mp = sfMouse_getPositionRenderWindow(sm->win);
     sfFloatRect play_rect = sfSprite_getGlobalBounds(sm->play_on.sprite);
@@ -53,7 +57,7 @@ void init_button_play(smenu_t *sm)
     if (sfFloatRect_contains(&play_rect, (float)mp.x, (float)mp.y)) {
         sm->play_off.boulen_button = 1;
         if (sfMouse_isButtonPressed(sfMouseLeft))
-            sm->bool = sfFalse;
+            rpg->scene = 1;
     } else
         sm->play_off.boulen_button = 0;
 }

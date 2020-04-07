@@ -9,8 +9,10 @@
     #define RPG_H_
 
     #include "basic.h"
-    #include "struct.h"
-    #include "start_menu.h"
+    #include "prototypes.h"
     #include "my.h"
+
+    #define WIDTH 1920
+    #define HEIGHT 1080
 
 #endif

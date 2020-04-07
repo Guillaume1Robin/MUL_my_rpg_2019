@@ -51,12 +51,12 @@ int create_sprite_htp_off(smenu_t *sm)
     return (0);
 }
 
-void init_button_how_to_play(smenu_t *sm)
+void update_button_how_to_play(smenu_t *sm)
 {
-    if (sfMouse_getPositionRenderWindow(sm->win).x >= sm->htp_on.pos.x && \
-    sfMouse_getPositionRenderWindow(sm->win).x <= sm->htp_on.pos.x + 240 &&\
-    sfMouse_getPositionRenderWindow(sm->win).y >= sm->htp_on.pos.y && \
-    sfMouse_getPositionRenderWindow(sm->win).y <= sm->htp_on.pos.y + 116) {
+    sfVector2i mp = sfMouse_getPositionRenderWindow(sm->win);
+    sfFloatRect htp_rect = sfSprite_getGlobalBounds(sm->htp_on.sprite);
+
+    if (sfFloatRect_contains(&htp_rect, mp.x, mp.y)) {
         sm->htp_off.boulen_button = 1;
     }
     else

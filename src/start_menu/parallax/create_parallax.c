@@ -7,39 +7,35 @@
 
 #include "rpg.h"
 
-void create_parallax(smenu_t *smenu)
+void create_parallax(smenu_t *sm)
 {
-    create_parallax_1(smenu);
-    create_parallax_2(smenu);
-    create_parallax_3(smenu);
-    // create_parallax_4(smenu);
-    create_parallax_5(smenu);
-    create_sky(smenu);
+    char *name = NULL;
+
+    sm->para = malloc(sizeof(menu_t *) * (6));
+    sm->para[5] = NULL;
+    for (int i = 0; i < 5; i++) {
+        sm->para[i] = malloc(sizeof(menu_t));
+        name = my_strcat(my_strcat("assets/parallax/", my_itos(i)), ".png");
+        sm->para[i]->texture = sfTexture_createFromFile(name, NULL);
+        sm->para[i]->sprite = sfSprite_create();
+        sfSprite_setTexture(sm->para[i]->sprite, sm->para[i]->texture, sfTrue);
+        sfSprite_setPosition(sm->para[i]->sprite, sm->para[i]->pos);
+        sm->para[i]->rect = init_rect(sm);
+    }
 }
 
-void create_sky(smenu_t *smenu)
+void draw_parallax(smenu_t *menu)
 {
-    smenu->sky.texture = sfTexture_createFromFile("assets/parallax/0.png", NULL);
-    smenu->sky.sprite = sfSprite_create();
-    sfSprite_setTexture(smenu->sky.sprite, smenu->sky.texture, sfTrue);
-    sfSprite_setPosition(smenu->sky.sprite, smenu->sky.pos);
+    for (int i = 0; menu->para[i]; i++)
+        sfRenderWindow_drawSprite(menu->win, menu->para[i]->sprite, NULL);
 }
 
-void draw_parallax(smenu_t *smenu)
-{
-    sfRenderWindow_drawSprite(smenu->win, smenu->sky.sprite, NULL);
-    sfRenderWindow_drawSprite(smenu->win, smenu->para1.sprite, NULL);
-    sfRenderWindow_drawSprite(smenu->win, smenu->para2.sprite, NULL);
-    sfRenderWindow_drawSprite(smenu->win, smenu->para3.sprite, NULL);
-    // sfRenderWindow_drawSprite(smenu->win, smenu->para4.sprite, NULL);
-    sfRenderWindow_drawSprite(smenu->win, smenu->para5.sprite, NULL);
-}
-
-sfIntRect move_init2(smenu_t *smenu)
+sfIntRect init_rect(smenu_t *smenu)
 {
     smenu->sprite_rect.top = 0;
     smenu->sprite_rect.left = 0;
-    smenu->sprite_rect.width = 1920;
-    smenu->sprite_rect.height = 1080;
+    smenu->sprite_rect.width = WIDTH;
+    smenu->sprite_rect.height = HEIGHT;
     return (smenu->sprite_rect);
 }
+

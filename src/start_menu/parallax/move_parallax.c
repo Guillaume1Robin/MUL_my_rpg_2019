@@ -7,27 +7,27 @@
 
 #include "rpg.h"
 
-void move_rect(sfIntRect *rectangle, int offset, int max_value)
+void move_hrect(sfIntRect *rectangle, int offset, int max_value)
 {
     rectangle->left = rectangle->left + offset;
     if (rectangle->left > max_value)
-        rectangle->left = 0;
+        rectangle->left = 1920;
 }
 
-void move_parallax(smenu_t *rpg)
+void move_vrect(sfIntRect *rectangle, int offset, int max_value)
 {
-    move_rect(&rpg->para1.rect, 2, 3840);
-    sfSprite_setTextureRect(rpg->para1.sprite, rpg->para1.rect);
+    rectangle->top = rectangle->top + offset;
+    if (rectangle->top > max_value)
+        rectangle->top = 0;
+}
 
-    move_rect(&rpg->para2.rect, 1, 3840);
-    sfSprite_setTextureRect(rpg->para2.sprite, rpg->para2.rect);
-
-    move_rect(&rpg->para3.rect, 1, 3840);
-    sfSprite_setTextureRect(rpg->para3.sprite, rpg->para3.rect);
-
-    // move_rect(&rpg->para4.rect, 4, 3840);
-    // sfSprite_setTextureRect(rpg->para4.sprite, rpg->para4.rect);
-
-    move_rect(&rpg->para5.rect, 1, 3840);
-    sfSprite_setTextureRect(rpg->para5.sprite, rpg->para5.rect);
+void move_parallax(smenu_t *menu)
+{
+    for (int i = 0; menu->para[i]; i++) {
+        if (i == 1)
+            move_hrect(&menu->para[i]->rect, 3, 3840);
+        else
+            move_hrect(&menu->para[i]->rect, 1, 3840);
+        sfSprite_setTextureRect(menu->para[i]->sprite, menu->para[i]->rect);
+    }
 }
