@@ -11,7 +11,7 @@ void move_hrect(sfIntRect *rectangle, int offset, int max_value)
 {
     rectangle->left = rectangle->left + offset;
     if (rectangle->left > max_value)
-        rectangle->left = 1920;
+        rectangle->left = 0;
 }
 
 void move_vrect(sfIntRect *rectangle, int offset, int max_value)

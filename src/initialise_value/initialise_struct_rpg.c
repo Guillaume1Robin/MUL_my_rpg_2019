@@ -9,13 +9,13 @@
 
 void initialise_value_struct_rpg(rpg_t *rpg)
 {
+    rpg->event = malloc(sizeof(rpg->event));
     rpg->clock_display.clock = sfClock_create();
     rpg->clock_player.clock = sfClock_create();
     rpg->clock_move_rect_player.clock = sfClock_create();
     rpg->scene = 0;
     for (int i = 0; i < 5; i++)
         rpg->mv[i] = 0;
-    rpg->event = malloc(sizeof(rpg->event));
 }
 
 int initialise_struct_window(rpg_t *rpg)
@@ -36,7 +36,7 @@ int initialise_struct_window(rpg_t *rpg)
 int initialise_value_struct(rpg_t *rpg)
 {
     initialise_value_struct_rpg(rpg);
-    if (initialise_struct_window(rpg))
+    if (initialise_struct_window(rpg) == 84)
         return (84);
     return (0);
 }
