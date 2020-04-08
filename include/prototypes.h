@@ -71,7 +71,7 @@
     //music
     void init_music(rpg_t *rpg);
     void play_music(rpg_t *rpg);
-    void change_voume(rpg_t *rpg);
+    void change_volume(rpg_t *rpg);
 
     /* Destroy */
 

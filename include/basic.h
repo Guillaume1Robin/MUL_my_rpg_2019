@@ -32,6 +32,7 @@
         sfVector2f size;
         sfVector2f pos;
         sfIntRect rect;
+        float speed;
     } player_t;
 
     typedef struct window_s

@@ -34,13 +34,14 @@ int create_player(rpg_t *rpg)
     rpg->player.sprite = sfSprite_create();
     sfSprite_setScale(rpg->player.sprite, (sfVector2f){2, 2});
     sfSprite_setTexture(rpg->player.sprite, rpg->player.texture, sfTrue);
-    rpg->player.pos.x = 10;
-    rpg->player.pos.y = 550;
+    rpg->player.pos.x = 32;
+    rpg->player.pos.y = (33 / 2) * 32 + 30;
     sfSprite_setPosition(rpg->player.sprite, rpg->player.pos);
     rpg->player.rect.top = 0;
     rpg->player.rect.left = 0;
     rpg->player.rect.width = 32;
     rpg->player.rect.height = 32;
+    rpg->player.speed = 1;
     sfSprite_setOrigin(rpg->player.sprite, (sfVector2f){16, 16});
     sfSprite_setTextureRect(rpg->player.sprite, rpg->player.rect);
     return(0);

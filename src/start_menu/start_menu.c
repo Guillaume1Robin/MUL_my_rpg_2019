@@ -61,7 +61,7 @@ void menu_loop(rpg_t *rpg)
         update_button_save(rpg->smenu);
         update_button_quit(rpg, rpg->smenu);
         update_button_how_to_play(rpg->smenu);
-        change_voume(rpg);
+        change_volume(rpg);
     }
     move_parallax(rpg->smenu);
     sfRenderWindow_clear(rpg->smenu->win, sfBlack);
