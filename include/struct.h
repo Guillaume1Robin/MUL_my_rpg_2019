@@ -9,7 +9,7 @@
     #define STRUCT_H_
 
     #include "basic.h"
-    #include "start_menu.h"
+    #define NB_LEVELS 5
 
     typedef struct clock_rpg_s
     {
@@ -38,45 +38,25 @@
         sfSprite *sprite;
         sfVector2f pos;
         int **map;
+        int **enemies;
     } map_t;
+
+    typedef struct run_s
+    {
+        map_t *levels;
+        size_t nb_levels;
+    } run_t;
 
     typedef struct rpg_s
     {
         int bool_menu;
         sfEvent *event;
-        clock_rpg_t clock_display;
-        clock_rpg_t clock_player;
         clock_rpg_t clock_move_rect_player;
         player_t player;
         window_t window;
         map_t map;
+        run_t run;
         smenu_t *smenu;
     } rpg_t;
-
-    int initialise_value_struct(rpg_t *rpg);
-
-    int create_window(rpg_t *rpg);
-
-    int create_map(rpg_t *rpg);
-
-    int create_player(rpg_t *rpg);
-
-    void create(rpg_t *rpg);
-
-    void display(rpg_t *rpg);
-
-    void open_window(rpg_t *rpg);
-
-    void move_player(rpg_t *rpg);
-
-    void clock_display(rpg_t *rpg);
-
-    void clock_player(rpg_t *rpg);
-
-    void clock_move_rect_player(rpg_t *rpg);
-
-    sfIntRect move_init2(smenu_t *smenu);
-
-    int **collision_parser(char const *map_path);
 
 #endif

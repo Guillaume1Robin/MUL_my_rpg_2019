@@ -22,7 +22,7 @@ static void (*mv_fct[5])(rpg_t *) = {
 * Scenes or menus ? 
 * We can make pseudo-inheritance: scenes are some kind of menus but their functions will be malloc'ed
 */
-static void (*scenes[2])(rpg_t *) = {
+static void (*loop[2])(rpg_t *) = {
     &menu_loop,
     &game_loop,
 };
@@ -54,6 +54,7 @@ void game_loop(rpg_t *rpg)
     }
     sfSprite_setPosition(rpg->player.sprite, rpg->player.pos);
     display(rpg);
+
 }
 
 /*
@@ -64,7 +65,7 @@ void main_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window.window)) {
         sfMusic_setVolume(rpg->music, rpg->volume);
-        scenes[rpg->scene](rpg);
+        loop[rpg->scene](rpg);
     }
     sfRenderWindow_destroy(rpg->window.window);
 }

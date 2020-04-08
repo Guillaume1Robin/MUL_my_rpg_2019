@@ -53,3 +53,11 @@ void create(rpg_t *rpg)
     create_map(rpg);
     create_player(rpg);
 }
+
+void create_game_layout(rpg_t *rpg)
+{
+    // rpg->levels = malloc(sizeof(level_t) * 6)
+
+    // for (int i = 0; i < 6; i++)
+    //     levels = load_level(rand() % 20);
+}
