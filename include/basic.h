@@ -93,6 +93,8 @@
         window_t window;
         map_t map;
         smenu_t *smenu;
+        sfMusic *music;
+        float volume;
     } rpg_t;
 
     void open_close_events(sfEvent *event, sfRenderWindow *win);
