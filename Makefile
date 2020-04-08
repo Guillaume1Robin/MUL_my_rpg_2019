@@ -15,6 +15,7 @@ SRC			=	src/parser.c								\
 				src/main_loop.c								\
 				src/initialise_value/initialise_struct_rpg.c\
 				src/create/create.c							\
+				src/create/create_map.c						\
 				src/display/display.c						\
 				src/move/move_player.c						\
 				src/move/set_movement.c						\

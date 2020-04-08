@@ -14,7 +14,9 @@
     int initialise_value_struct(rpg_t *rpg);
     void create(rpg_t *rpg);
     int create_window(rpg_t *rpg);
-    int create_map(rpg_t *rpg);
+    int create_map1(rpg_t *rpg);
+    // int create_map2(rpg_t *rpg);
+    // int create_map3(rpg_t *rpg);
     int create_player(rpg_t *rpg);
 
     /* Menu */

@@ -7,21 +7,6 @@
 
 #include "rpg.h"
 
-int create_map(rpg_t *rpg)
-{
-    char *name = "assets/sprites/map1.png";
-
-    rpg->map.texture = sfTexture_createFromFile(name, NULL);
-    if (!rpg->map.texture) {
-        write(2, "error missing the button\n", 25);
-        return (84);
-    }
-    rpg->map.sprite = sfSprite_create();
-    sfSprite_setTexture(rpg->map.sprite, rpg->map.texture, sfTrue);
-    sfSprite_setPosition(rpg->map.sprite, rpg->map.pos);
-    return (0);
-}
-
 int create_player(rpg_t *rpg)
 {
     char *path_to_lama = "assets/sprites/lama_sprite_sheet.png";
@@ -50,6 +35,8 @@ void create(rpg_t *rpg)
 {
     rpg->smenu = create_menu();
     rpg->smenu->win = rpg->window.window;
-    create_map(rpg);
+    create_map1(rpg);
+    // create_map2(rpg);
+    // create_map3(rpg);
     create_player(rpg);
 }
