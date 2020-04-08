@@ -11,18 +11,17 @@ int main(void)
 {
     rpg_t *rpg = malloc(sizeof(rpg_t));
 
-<<<<<<< HEAD
     rpg->map.map = collision_parser("map_txt/map1");
-    if (!initialise_value_struct(rpg))
-    create(rpg);
-    open_window(rpg);
-    free(rpg);
-=======
+    
+    for (int y = 0; rpg->map.map[y]; y++) {
+   for (int x = 0; rpg->map.map[y][x] != -1; x++)
+      printf("%d", rpg->map.map[y][x]);
+   printf("\n");
+}
     if (!initialise_value_struct(rpg)) {
         create(rpg);
         main_loop(rpg);
         free(rpg);
         return (0);
     }
->>>>>>> master
 }

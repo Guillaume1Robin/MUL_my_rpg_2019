@@ -60,15 +60,6 @@ void menu_loop(rpg_t *rpg)
         update_button_quit(rpg->smenu);
         update_button_how_to_play(rpg->smenu);
     }
-<<<<<<< HEAD
-    move_parallax(smenu);
-    sfRenderWindow_clear(smenu->win, sfBlack);
-    sfRenderWindow_drawSprite(smenu->win, smenu->sky.sprite, NULL);
-    draw_parallax(smenu);
-    display_button(smenu);
-    sfRenderWindow_display(smenu->win);
-}
-=======
     move_parallax(rpg->smenu);
     sfRenderWindow_clear(rpg->smenu->win, sfBlack);
     draw_parallax(rpg->smenu);
@@ -113,4 +104,3 @@ void menu_loop(rpg_t *rpg)
 //     // sfRenderWindow_destroy(smenu->win);
 //     return (0);
 // }
->>>>>>> master

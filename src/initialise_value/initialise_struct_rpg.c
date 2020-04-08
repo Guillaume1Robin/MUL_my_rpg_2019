@@ -25,7 +25,7 @@ int initialise_struct_window(rpg_t *rpg)
     rpg->window.mode.bitsPerPixel = 32;
     rpg->window.window = sfRenderWindow_create(rpg->window.mode,
     "MY_RPG", sfResize | sfClose, NULL);
-    sfRenderWindow_setFramerateLimit(rpg->window.window, 60);
+    sfRenderWindow_setFramerateLimit(rpg->window.window, 150);
     if (!rpg->window.window) {
         write(2, "error, window not display\n", 27);
         return (84);
