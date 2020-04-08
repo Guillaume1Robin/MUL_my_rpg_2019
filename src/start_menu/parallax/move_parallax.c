@@ -11,7 +11,7 @@ void move_hrect(sfIntRect *rectangle, int offset, int max_value)
 {
     rectangle->left = rectangle->left + offset;
     if (rectangle->left > max_value)
-        rectangle->left = 1920;
+        rectangle->left = 0;
 }
 
 void move_vrect(sfIntRect *rectangle, int offset, int max_value)
@@ -25,7 +25,7 @@ void move_parallax(smenu_t *menu)
 {
     for (int i = 0; menu->para[i]; i++) {
         if (i == 1)
-            move_hrect(&menu->para[i]->rect, 3, 3840);
+            move_hrect(&menu->para[i]->rect, 2, 3840);
         else
             move_hrect(&menu->para[i]->rect, 1, 3840);
         sfSprite_setTextureRect(menu->para[i]->sprite, menu->para[i]->rect);

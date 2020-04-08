@@ -1,8 +1,12 @@
 {
     "files.associations": {
+<<<<<<< HEAD
+        "rpg.h": "c"
+=======
         "rpg.h": "c",
         "start_menu.h": "c",
         "prototypes.h": "c",
         "basic.h": "c"
+>>>>>>> master
     }
 }

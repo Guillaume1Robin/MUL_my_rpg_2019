@@ -42,6 +42,7 @@
 
     typedef struct map_s
     {
+        int **map;
         sfTexture *texture;
         sfSprite *sprite;
         sfVector2f pos;
@@ -98,5 +99,7 @@
     } rpg_t;
 
     void open_close_events(rpg_t *rpg, sfEvent *event, sfRenderWindow *win);
+
+    int **collision_parser(char const *map_path);
 
 #endif
