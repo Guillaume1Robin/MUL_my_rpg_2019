@@ -47,7 +47,8 @@ int create_player(rpg_t *rpg)
 
 void create(rpg_t *rpg)
 {
-    rpg->smenu = create_menu();
+    // init_music(rpg);
+    rpg->smenu = create_menu(rpg);
     rpg->smenu->win = rpg->window.window;
     create_map(rpg);
     create_player(rpg);

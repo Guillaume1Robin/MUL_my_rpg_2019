@@ -97,6 +97,6 @@
         float volume;
     } rpg_t;
 
-    void open_close_events(sfEvent *event, sfRenderWindow *win);
+    void open_close_events(rpg_t *rpg, sfEvent *event, sfRenderWindow *win);
 
 #endif

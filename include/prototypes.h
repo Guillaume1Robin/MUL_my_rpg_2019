@@ -20,7 +20,7 @@
     /* Menu */
     // init
 
-    smenu_t *create_menu(void);
+    smenu_t *create_menu(rpg_t *rpg);
     void create_parallax(smenu_t *smenu);
     int create_sprite_button_play_on(smenu_t *smenu);
     int create_sprite_play_off(smenu_t *smenu);
@@ -41,7 +41,7 @@
     void update_button_play(smenu_t *smenu, rpg_t *rpg);
     void update_button_save(smenu_t *smenu);
     void update_button_how_to_play(smenu_t *smenu);
-    void update_button_quit(smenu_t *smenu);
+    void update_button_quit(rpg_t *rpg, smenu_t *smenu);
 
     //display
 
@@ -67,6 +67,11 @@
     //display
 
     void display(rpg_t *rpg);
+
+    //music
+    void init_music(rpg_t *rpg);
+    void play_music(rpg_t *rpg);
+    void change_voume(rpg_t *rpg);
 
     /* Destroy */
 

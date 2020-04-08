@@ -7,10 +7,12 @@
 
 #include "rpg.h"
 
-smenu_t *create_menu(void)
+smenu_t *create_menu(rpg_t *rpg)
 {
     smenu_t *smenu = malloc(sizeof(smenu_t));
 
+    init_music(rpg);
+    play_music(rpg);
     create_parallax(smenu);
     create_sprite_button_play_on(smenu);
     create_sprite_play_off(smenu);
@@ -54,12 +56,14 @@ void display_button(smenu_t *smenu)
 void menu_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_pollEvent(rpg->smenu->win, &rpg->smenu->event)) {
-        open_close_events(&rpg->smenu->event, rpg->smenu->win);
+        open_close_events(rpg, &rpg->smenu->event, rpg->smenu->win);
         update_button_play(rpg->smenu, rpg);
         update_button_save(rpg->smenu);
-        update_button_quit(rpg->smenu);
+        update_button_quit(rpg, rpg->smenu);
         update_button_how_to_play(rpg->smenu);
+        change_voume(rpg);
     }
+    sfMusic_setVolume(rpg->music, rpg->volume);
     move_parallax(rpg->smenu);
     sfRenderWindow_clear(rpg->smenu->win, sfBlack);
     draw_parallax(rpg->smenu);

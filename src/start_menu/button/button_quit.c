@@ -49,15 +49,18 @@ int create_sprite_quit_off(smenu_t *sm)
     return (0);
 }
 
-void update_button_quit(smenu_t *sm)
+void update_button_quit(rpg_t *rpg, smenu_t *sm)
 {
     sfVector2i mp = sfMouse_getPositionRenderWindow(sm->win);
     sfFloatRect quit_rect = sfSprite_getGlobalBounds(sm->quit_on.sprite);
 
     if (sfFloatRect_contains(&quit_rect, (float)mp.x, (float)mp.y)) {
         sm->quit_off.boulen_button = 1;
-        if (sfMouse_isButtonPressed(sfMouseLeft))
+        if (sfMouse_isButtonPressed(sfMouseLeft)) {
+            sfMusic_destroy(rpg->music);
             sfRenderWindow_close(sm->win);
+            return;
+        }
     } else
         sm->quit_off.boulen_button = 0;
 }

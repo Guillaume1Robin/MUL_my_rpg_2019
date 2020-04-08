@@ -45,7 +45,7 @@ Got to figure out which events and functions are always played in a level and th
 void game_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_pollEvent(rpg->window.window, rpg->event)) {
-        open_close_events(rpg->event, rpg->window.window);
+        open_close_events(rpg, rpg->event, rpg->window.window);
         set_movement(rpg);
     }
     for (int i = 0; i < 5; i++) {

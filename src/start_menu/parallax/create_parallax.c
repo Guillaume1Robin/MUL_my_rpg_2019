@@ -19,7 +19,7 @@ void create_parallax(smenu_t *sm)
         sm->para[i]->texture = sfTexture_createFromFile(name, NULL);
         sm->para[i]->sprite = sfSprite_create();
         sfSprite_setTexture(sm->para[i]->sprite, sm->para[i]->texture, sfTrue);
-        sfSprite_setPosition(sm->para[i]->sprite, sm->para[i]->pos);
+        sfSprite_setPosition(sm->para[i]->sprite, (sfVector2f){0,0});
         sm->para[i]->rect = init_rect(sm);
     }
 }

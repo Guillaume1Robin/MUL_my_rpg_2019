@@ -26,7 +26,8 @@ SRC			=	src/parser.c								\
 				src/start_menu/button/button_play.c			\
 				src/start_menu/button/button_save.c			\
 				src/start_menu/button/button_how_to_play.c	\
-				src/start_menu/button/button_quit.c
+				src/start_menu/button/button_quit.c			\
+				src/start_menu/music.c
 TEST_SRC	=	tests/*.c
 OBJ			=	$(SRC:.c=.o)
 TEST_OBJ	=	$(TEST_SRC:.c=.o)
