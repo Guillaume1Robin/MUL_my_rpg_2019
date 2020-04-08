@@ -63,7 +63,6 @@ void menu_loop(rpg_t *rpg)
         update_button_how_to_play(rpg->smenu);
         change_voume(rpg);
     }
-    sfMusic_setVolume(rpg->music, rpg->volume);
     move_parallax(rpg->smenu);
     sfRenderWindow_clear(rpg->smenu->win, sfBlack);
     draw_parallax(rpg->smenu);

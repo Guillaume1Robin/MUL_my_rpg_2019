@@ -10,7 +10,7 @@
 void init_music(rpg_t *rpg)
 {
     rpg->music = sfMusic_createFromFile("sound_menu.ogg");
-    rpg->volume = 50;
+    rpg->volume = 50.0;
 }
 
 void play_music(rpg_t *rpg)
@@ -21,10 +21,10 @@ void play_music(rpg_t *rpg)
 
 void change_voume(rpg_t *rpg)
 {
-    if (sfKeyboard_isKeyPressed(sfKeyP) && rpg->volume < 90) {
+    if (sfKeyboard_isKeyPressed(sfKeyP) && rpg->volume <= 90) {
         rpg->volume += 10;
     }
-    if (sfKeyboard_isKeyPressed(sfKeyM) && rpg->volume > 10) {
+    if (sfKeyboard_isKeyPressed(sfKeyM) && rpg->volume >= 10) {
         rpg->volume -= 10;
     }
 }

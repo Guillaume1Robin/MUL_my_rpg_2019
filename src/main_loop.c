@@ -63,6 +63,7 @@ which scene we are on.
 void main_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window.window)) {
+        sfMusic_setVolume(rpg->music, rpg->volume);
         scenes[rpg->scene](rpg);
     }
     sfRenderWindow_destroy(rpg->window.window);
