@@ -110,11 +110,7 @@
         sfMusic *music;
     } rpg_t;
 
-    static const enum loops {
-        MENU,
-        GAME,
-        END
-    };
+    enum loops {MENU, GAME};
 
     void open_close_events(rpg_t *rpg, sfEvent *event, sfRenderWindow *win);
 
