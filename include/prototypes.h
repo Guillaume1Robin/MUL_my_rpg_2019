@@ -12,6 +12,7 @@
 
     /* Parser */
     int **collision_parser(char const *map_path);
+    int **fcollision_parser(FILE *file);
     sfBool wrong_line_test(char **sline, char *line);
 
     /* Initiate the program */
@@ -20,6 +21,7 @@
     int create_window(rpg_t *rpg);
     int create_map(rpg_t *rpg);
     int create_player(rpg_t *rpg);
+    level_t *level_parser(char const *level_path);
 
     /* Menu */
     // init

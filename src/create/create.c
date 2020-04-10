@@ -9,7 +9,7 @@
 
 int create_map(rpg_t *rpg)
 {
-    char *name = "assets/sprites/map1.png";
+    char *name = "assets/maps/png/map1.png";
 
     rpg->map.texture = sfTexture_createFromFile(name, NULL);
     if (!rpg->map.texture) {

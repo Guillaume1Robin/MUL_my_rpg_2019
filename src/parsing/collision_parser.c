@@ -7,14 +7,6 @@
 
 #include "rpg.h"
 
-void free_array(void *array)
-{
-    void **arr = (void **)array;
-    for (int i = 0; arr[i]; i++)
-        free(arr[i]);
-    free(array);
-}
-
 char **check_line(int width, int height, char *line)
 {
     char **sep_line = NULL;
@@ -26,6 +18,7 @@ char **check_line(int width, int height, char *line)
         }
     sep_line = my_word_array(line);
     if ((int)array_len(sep_line) != width * height) {
+        free_array(sep_line);
         write(2, "Invalid file\n", 13);
         return (NULL);
     }
@@ -44,6 +37,7 @@ int **fill_table(int width, int height, char **sep_line)
         for (int x = 0; x < width && sep_line[n]; x++)
             tab[y][x] = my_getnbr(sep_line[n++]);
     }
+    free_array(sep_line);
     return (tab);
 }
 
@@ -58,20 +52,20 @@ int **parse_file(int width, int height, FILE *file)
         return (NULL);
     }
     sep_line = check_line(width, height, line);
+    free(line);
     if (!sep_line)
         return (NULL);
     return (fill_table(width, height, sep_line));
 }
 
 /*
-* Parses a file obtained by treating a jsonized tiled map trough parse.py
+* Parses a file obtained by treating a jsonized tiled map trough parse.py but already opened
 * Returns a **int NULL-terminated on success.
 * Each line of the array ends with (-1) so that it is easier to browse.
 * Returns NULL on failure and writes on stderr the corresponding message.
 */
-int **collision_parser(char const *map_path)
+int **fcollision_parser(FILE *file)
 {
-    FILE *file = fopen(map_path, "r");
     size_t n = 0;
     char *line = NULL;
     char **sline = NULL;
@@ -85,7 +79,23 @@ int **collision_parser(char const *map_path)
     sline = my_word_array(line);
     if (wrong_line_test(sline, line))
         return (NULL);
+    free(line);
     tab = parse_file(my_getnbr(sline[0]), my_getnbr(sline[1]), file);
+    free_array(sline);
+    return (tab);
+}
+
+/*
+* Parses a file obtained by treating a jsonized tiled map trough parse.py
+* Returns a **int NULL-terminated on success.
+* Each line of the array ends with (-1) so that it is easier to browse.
+* Returns NULL on failure and writes on stderr the corresponding message.
+*/
+int **collision_parser(char const *map_path)
+{
+    FILE *file = fopen(map_path, "r");
+    int **tab = fcollision_parser(file);
+
     fclose(file);
     return (tab);
 }

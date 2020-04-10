@@ -50,13 +50,21 @@
         sfVector2f pos;
     } map_t;
 
+    typedef struct enemy_s
+    {
+        int type;
+        sfVector2f start_pos;
+        sfVector2f pos;
+    } enemy_t;
+
     typedef struct level_s
     {
         sfVector2f merch_pos;
         sfVector2f player_start;
         sfVector2f player_end;
-        int **enemies;
-        int **map;
+        int nb_enemies;
+        enemy_t **enemies;
+        int **collisions;
         sfTexture *texture;
         sfSprite *sprite;
         sfVector2f pos;
@@ -105,12 +113,15 @@
         player_t player;
         window_t window;
         map_t map;
+        level_t *level;
         smenu_t *smenu;
         float volume;
         sfMusic *music;
     } rpg_t;
 
     enum loops {MENU, GAME};
+
+    enum types {AIR, WEAK, STRONG, MNIBOSS, BOSS};
 
     void open_close_events(rpg_t *rpg, sfEvent *event, sfRenderWindow *win);
 

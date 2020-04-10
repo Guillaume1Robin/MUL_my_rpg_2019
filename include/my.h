@@ -83,4 +83,6 @@
 
     int alphanum_test(char *str);
 
+    void free_array(void *array);
+
 #endif /*MY_H_ */

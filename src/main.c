@@ -11,7 +11,7 @@ int main(void)
 {
     rpg_t *rpg = malloc(sizeof(rpg_t));
 
-    rpg->map.map = collision_parser("map_txt/map1");
+    rpg->map.map = collision_parser("assets/maps/txt/map1");
     for (int y = 0; rpg->map.map[y]; y++) {
         for (int x = 0; rpg->map.map[y][x] >= 0; x++)
             printf("%d", rpg->map.map[y][x]);

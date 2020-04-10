@@ -12,7 +12,9 @@ LDFLAGS		=	-L./ -lmy -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-syste
 TEST_LDFLAGS=	-lcriterion --coverage -L./ -lmy
 SRC			=	src/main.c									\
 				src/main_loop.c								\
-				src/parsing/parser.c						\
+				src/parsing/collision_parser.c				\
+				src/parsing/level_parser.c					\
+				src/parsing/error_handling.c				\
 				src/initialise_value/initialise_struct_rpg.c\
 				src/create/create.c							\
 				src/display/display.c						\
