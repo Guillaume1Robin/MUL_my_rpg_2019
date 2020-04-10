@@ -24,7 +24,7 @@ void change_volume(rpg_t *rpg)
     if (sfKeyboard_isKeyPressed(sfKeyP) && rpg->volume <= 90) {
         rpg->volume += 2;
     }
-    if (sfKeyboard_isKeyPressed(sfKeyM) && rpg->volume > 1  ) {
+    if (sfKeyboard_isKeyPressed(sfKeyM) && rpg->volume > 1) {
         rpg->volume -= 2;
     }
     if (sfKeyboard_isKeyPressed(sfKeyF3)) {
