@@ -83,12 +83,8 @@ int **collision_parser(char const *map_path)
         return (NULL);
     }
     sline = my_word_array(line);
-    if (array_len(sline) != 2 || num_test(sline[0]) || num_test(sline[1])) {
-        free_array(sline);
-        free(line);
-        write(2, "Invalid file\n", 13);
+    if (wrong_line_test(sline, line))
         return (NULL);
-    }
     tab = parse_file(my_getnbr(sline[0]), my_getnbr(sline[1]), file);
     fclose(file);
     return (tab);

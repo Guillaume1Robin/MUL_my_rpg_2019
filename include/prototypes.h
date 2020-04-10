@@ -10,6 +10,10 @@
 
     #include "basic.h"
 
+    /* Parser */
+    int **collision_parser(char const *map_path);
+    sfBool wrong_line_test(char **sline, char *line);
+
     /* Initiate the program */
     int initialise_value_struct(rpg_t *rpg);
     void create(rpg_t *rpg);

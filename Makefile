@@ -10,9 +10,9 @@ CC			=	gcc
 CFLAGS		=	-W -Wall -Wextra -Iinclude/ -g3
 LDFLAGS		=	-L./ -lmy -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system
 TEST_LDFLAGS=	-lcriterion --coverage -L./ -lmy
-SRC			=	src/parser.c								\
-				src/main.c									\
+SRC			=	src/main.c									\
 				src/main_loop.c								\
+				src/parsing/parser.c						\
 				src/initialise_value/initialise_struct_rpg.c\
 				src/create/create.c							\
 				src/display/display.c						\
