@@ -11,7 +11,7 @@ void initialise_value_struct_rpg(rpg_t *rpg)
 {
     rpg->event = malloc(sizeof(rpg->event));
     rpg->clock_move_rect_player.clock = sfClock_create();
-    rpg->scene = 0;
+    rpg->scene = MENU;
     for (int i = 0; i < 5; i++)
         rpg->mv[i] = 0;
 }
