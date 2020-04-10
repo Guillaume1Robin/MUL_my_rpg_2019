@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#define FCOORD(x, y) (sfVector2f){x, y}
 
 void stay_still(rpg_t *rpg)
 {

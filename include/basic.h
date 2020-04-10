@@ -27,6 +27,7 @@
 
     typedef struct player_s
     {
+        int hp;
         sfTexture *texture;
         sfSprite *sprite;
         sfVector2f size;
@@ -49,6 +50,18 @@
         sfVector2f pos;
     } map_t;
 
+    typedef struct level_s
+    {
+        sfVector2f merch_pos;
+        sfVector2f player_start;
+        sfVector2f player_end;
+        int **enemies;
+        int **map;
+        sfTexture *texture;
+        sfSprite *sprite;
+        sfVector2f pos;
+    } level_t;
+
     typedef struct button_s
     {
         sfTexture *texture;
@@ -56,7 +69,7 @@
         sfVector2f size;
         sfVector2f pos;
         sfIntRect rect;
-        int boulen_button;
+        int boulean_button;
     } button_t;
 
     typedef struct menu_s
@@ -88,8 +101,6 @@
         int scene;
         int mv[5];
         sfEvent *event;
-        clock_rpg_t clock_display;
-        clock_rpg_t clock_player;
         clock_rpg_t clock_move_rect_player;
         player_t player;
         window_t window;

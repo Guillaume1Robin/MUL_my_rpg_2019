@@ -19,6 +19,7 @@ int main(void)
     }
     if (!initialise_value_struct(rpg)) {
         create(rpg);
+        play_music(rpg);
         main_loop(rpg);
         free(rpg);
         return (0);

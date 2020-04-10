@@ -55,12 +55,12 @@ void update_button_quit(rpg_t *rpg, smenu_t *sm)
     sfFloatRect quit_rect = sfSprite_getGlobalBounds(sm->quit_on.sprite);
 
     if (sfFloatRect_contains(&quit_rect, (float)mp.x, (float)mp.y)) {
-        sm->quit_off.boulen_button = 1;
+        sm->quit_off.boulean_button = 1;
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
             sfMusic_destroy(rpg->music);
             sfRenderWindow_close(sm->win);
             return;
         }
     } else
-        sm->quit_off.boulen_button = 0;
+        sm->quit_off.boulean_button = 0;
 }
