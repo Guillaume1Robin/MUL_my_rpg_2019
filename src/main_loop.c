@@ -64,7 +64,7 @@ void main_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window.window)) {
         scenes[rpg->scene](rpg);
-        printf("scene : %d\n", rpg->scene);
+        // printf("scene : %d\n", rpg->scene);
     }
     sfRenderWindow_destroy(rpg->window.window);
 }
