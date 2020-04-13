@@ -10,10 +10,15 @@
 /*
 * Basic closing events: esc and cross
 */
-void open_close_events(sfEvent *event, sfRenderWindow *win)
+void open_close_events(rpg_t *rpg, sfEvent *event, sfRenderWindow *win)
 {
-    if (event->type == sfEvtClosed)
+    if (event->type == sfEvtClosed) {
+        sfMusic_destroy(rpg->music);
         sfRenderWindow_close(win);
-    else if (event->type == sfEvtKeyPressed && event->key.code == sfKeyEscape)
+        return;
+    } else if (event->type == sfEvtKeyPressed && event->key.code == sfKeyEscape) {
+        sfMusic_destroy(rpg->music);
         sfRenderWindow_close(win);
+        return;
+    }
 }

@@ -10,9 +10,11 @@ CC			=	gcc
 CFLAGS		=	-W -Wall -Wextra -Iinclude/ -g3
 LDFLAGS		=	-L./ -lmy -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system
 TEST_LDFLAGS=	-lcriterion --coverage -L./ -lmy
-SRC			=	src/parser.c								\
-				src/main.c									\
+SRC			=	src/main.c									\
 				src/main_loop.c								\
+				src/parsing/collision_parser.c				\
+				src/parsing/level_parser.c					\
+				src/parsing/error_handling.c				\
 				src/initialise_value/initialise_struct_rpg.c\
 				src/create/create.c							\
 				src/create/create_map.c						\
@@ -27,7 +29,8 @@ SRC			=	src/parser.c								\
 				src/start_menu/button/button_play.c			\
 				src/start_menu/button/button_save.c			\
 				src/start_menu/button/button_how_to_play.c	\
-				src/start_menu/button/button_quit.c
+				src/start_menu/button/button_quit.c			\
+				src/sound/music.c
 TEST_SRC	=	tests/*.c
 OBJ			=	$(SRC:.c=.o)
 TEST_OBJ	=	$(TEST_SRC:.c=.o)

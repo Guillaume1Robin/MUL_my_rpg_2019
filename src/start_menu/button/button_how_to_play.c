@@ -57,8 +57,8 @@ void update_button_how_to_play(smenu_t *sm)
     sfFloatRect htp_rect = sfSprite_getGlobalBounds(sm->htp_on.sprite);
 
     if (sfFloatRect_contains(&htp_rect, mp.x, mp.y)) {
-        sm->htp_off.boulen_button = 1;
+        sm->htp_off.boulean_button = 1;
     }
     else
-        sm->htp_off.boulen_button = 0;
+        sm->htp_off.boulean_button = 0;
 }

@@ -7,10 +7,11 @@
 
 #include "rpg.h"
 
-smenu_t *create_menu(void)
+smenu_t *create_menu(rpg_t *rpg)
 {
     smenu_t *smenu = malloc(sizeof(smenu_t));
 
+    init_music(rpg);
     create_parallax(smenu);
     create_sprite_button_play_on(smenu);
     create_sprite_play_off(smenu);
@@ -20,32 +21,32 @@ smenu_t *create_menu(void)
     create_sprite_htp_off(smenu);
     create_sprite_button_quit_on(smenu);
     create_sprite_quit_off(smenu);
-    smenu->play_off.boulen_button = 0;
-    smenu->save_off.boulen_button = 0;
-    smenu->htp_off.boulen_button = 0;
-    smenu->quit_off.boulen_button = 0;
-     smenu->play_on.boulen_button = 0;
-    smenu->save_on.boulen_button = 0;
-    smenu->htp_on.boulen_button = 0;
-    smenu->quit_on.boulen_button = 0;
+    smenu->play_off.boulean_button = 0;
+    smenu->save_off.boulean_button = 0;
+    smenu->htp_off.boulean_button = 0;
+    smenu->quit_off.boulean_button = 0;
+     smenu->play_on.boulean_button = 0;
+    smenu->save_on.boulean_button = 0;
+    smenu->htp_on.boulean_button = 0;
+    smenu->quit_on.boulean_button = 0;
     return (smenu);
 }
 
 void display_button(smenu_t *smenu)
 {
-    if (smenu->play_off.boulen_button == 0)
+    if (smenu->play_off.boulean_button == 0)
         sfRenderWindow_drawSprite(smenu->win, smenu->play_on.sprite, NULL);
     else
         sfRenderWindow_drawSprite(smenu->win, smenu->play_off.sprite, NULL);
-    if (smenu->save_off.boulen_button == 0)
+    if (smenu->save_off.boulean_button == 0)
         sfRenderWindow_drawSprite(smenu->win, smenu->save_on.sprite, NULL);
     else
         sfRenderWindow_drawSprite(smenu->win, smenu->save_off.sprite, NULL);
-    if (smenu->htp_off.boulen_button == 0)
+    if (smenu->htp_off.boulean_button == 0)
         sfRenderWindow_drawSprite(smenu->win, smenu->htp_on.sprite, NULL);
     else
         sfRenderWindow_drawSprite(smenu->win, smenu->htp_off.sprite, NULL);
-    if (smenu->quit_off.boulen_button == 0)
+    if (smenu->quit_off.boulean_button == 0)
         sfRenderWindow_drawSprite(smenu->win, smenu->quit_on.sprite, NULL);
     else
         sfRenderWindow_drawSprite(smenu->win, smenu->quit_off.sprite, NULL);
@@ -54,11 +55,12 @@ void display_button(smenu_t *smenu)
 void menu_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_pollEvent(rpg->smenu->win, &rpg->smenu->event)) {
-        open_close_events(&rpg->smenu->event, rpg->smenu->win);
+        open_close_events(rpg, &rpg->smenu->event, rpg->smenu->win);
         update_button_play(rpg->smenu, rpg);
         update_button_save(rpg->smenu);
-        update_button_quit(rpg->smenu);
+        update_button_quit(rpg, rpg->smenu);
         update_button_how_to_play(rpg->smenu);
+        change_volume(rpg);
     }
     move_parallax(rpg->smenu);
     sfRenderWindow_clear(rpg->smenu->win, sfBlack);

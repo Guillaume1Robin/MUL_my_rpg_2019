@@ -10,6 +10,11 @@
 
     #include "basic.h"
 
+    /* Parser */
+    int **collision_parser(char const *map_path);
+    int **fcollision_parser(FILE *file);
+    sfBool wrong_line_test(char **sline, char *line);
+
     /* Initiate the program */
     int initialise_value_struct(rpg_t *rpg);
     void create(rpg_t *rpg);
@@ -18,11 +23,12 @@
     // int create_map2(rpg_t *rpg);
     // int create_map3(rpg_t *rpg);
     int create_player(rpg_t *rpg);
+    level_t *level_parser(char const *level_path);
 
     /* Menu */
     // init
 
-    smenu_t *create_menu(void);
+    smenu_t *create_menu(rpg_t *rpg);
     void create_parallax(smenu_t *smenu);
     int create_sprite_button_play_on(smenu_t *smenu);
     int create_sprite_play_off(smenu_t *smenu);
@@ -43,7 +49,7 @@
     void update_button_play(smenu_t *smenu, rpg_t *rpg);
     void update_button_save(smenu_t *smenu);
     void update_button_how_to_play(smenu_t *smenu);
-    void update_button_quit(smenu_t *smenu);
+    void update_button_quit(rpg_t *rpg, smenu_t *smenu);
 
     //display
 
@@ -69,6 +75,11 @@
     //display
 
     void display(rpg_t *rpg);
+
+    //music
+    void init_music(rpg_t *rpg);
+    void play_music(rpg_t *rpg);
+    void change_volume(rpg_t *rpg);
 
     /* Destroy */
 

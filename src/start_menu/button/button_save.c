@@ -55,7 +55,7 @@ void update_button_save(smenu_t *sm)
     sfFloatRect save_rect = sfSprite_getGlobalBounds(sm->save_on.sprite);
 
     if (sfFloatRect_contains(&save_rect, (float)mp.x, (float)mp.y)) {
-        sm->save_off.boulen_button = 1;
+        sm->save_off.boulean_button = 1;
     } else
-        sm->save_off.boulen_button = 0;
+        sm->save_off.boulean_button = 0;
 }
