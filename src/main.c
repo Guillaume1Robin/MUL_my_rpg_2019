@@ -11,17 +11,15 @@ int main(void)
 {
     rpg_t *rpg = malloc(sizeof(rpg_t));
 
-    rpg->map.map = collision_parser("assets/maps/txt/map1");
-    for (int y = 0; rpg->map.map[y]; y++) {
-        for (int x = 0; rpg->map.map[y][x] >= 0; x++)
-            printf("%d", rpg->map.map[y][x]);
-        printf("\n");
-    }
-    if (!initialise_value_struct(rpg)) {
+    rpg->levels = create_game_layout(MAX_LEVEL - 1);
+    init_music(rpg);
+    if (!initialize_value_struct(rpg)) {
         create(rpg);
         play_music(rpg);
         main_loop(rpg);
+        destroy_rpg(rpg);
         free(rpg);
         return (0);
     }
+    return (84);
 }

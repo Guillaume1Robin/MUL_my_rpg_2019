@@ -7,13 +7,23 @@
 
 #include "rpg.h"
 
+static sfBool (*ld_en_percs[5])(enemy_t *) =
+{
+    [AIR] = &get_bat_percs,
+    [SLUG] = &get_slug_percs,
+    [SKELETON] = &get_skeleton_percs,
+    [MINIBOSS] = &get_miniboss_percs,
+    [BOSS] = &get_boss_percs
+
+};
+
 sfBool fill_enemy_struct(enemy_t *enemy, char *info)
 {
     char **tmp = my_sep_array(info, ':');
 
     if (array_len(tmp) != 3)
         return (sfFalse);
-    enemy->type = my_getnbr(tmp[0]);
+    enemy->type = my_getnbr(tmp[0]) - 1;
     enemy->start_pos.x = (float)my_getnbr(tmp[1]);
     enemy->start_pos.y = (float)my_getnbr(tmp[2]);
     free_array(tmp);
@@ -35,7 +45,7 @@ enemy_t **load_enemies(FILE *file, int nb_enemies)
     }
     sline = my_word_array(line);
     free(line);
-    for (int i = 0; sline[i]; i++) {
+    for (int i = 0; sline && sline[i]; i++) {
         enemies[i] = malloc(sizeof(enemy_t));
         if (!fill_enemy_struct(enemies[i], sline[i]))
             return (NULL);
@@ -47,7 +57,7 @@ enemy_t **load_enemies(FILE *file, int nb_enemies)
 sfVector2f parse_pos(char *tmp)
 {
     char **arr = my_sep_array(tmp, ':');
-    sfVector2f pos = {};
+    sfVector2f pos = {0};
 
 
     if (array_len(arr) != 2) {
@@ -82,11 +92,13 @@ void load_positions(level_t *level, FILE *file)
 
 level_t *level_parser(char const *level_path)
 {
-    level_t *level = malloc(sizeof(*level));
+    level_t *level = malloc(sizeof(level_t));
     FILE *file = fopen(level_path, "r");
     char *line = NULL;
     size_t len_line = 0;
 
+    if (!file)
+        return (NULL);
     level->collisions = fcollision_parser(file);
     if (getline(&line, &len_line, file) <= 0) {
         free(line);

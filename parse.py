@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import json
 from sys import argv
 
@@ -24,8 +25,8 @@ for layer in maprpg['layers']:
                 nb += 1
         f.write(str(nb) + '\n')
         for i in range(len(layer['data'])):
-            if (i != 0):
-                f.write(str(layer['data'][i]) + ':' + str((i % layer['width']) * 32) + ':' + str((i / layer['width']) * 32) + ' ')
+            if (layer['data'][i] != 0):
+                f.write(str(layer['data'][i]) + ':' + str((i % layer['width']) * 32) + ':' + str(int(i / layer['width']) * 32) + ' ')
         f.write('\n')
 
 found = False
@@ -34,10 +35,10 @@ for layer in maprpg['layers']:
         found = True
         idx = -1
         for i in range(len(layer['data'])):
-            if (layer['data'][i] != '0'):
+            if (layer['data'][i] != 0):
                 idx = i
         if (idx != -1):
-            f.write(str((i % layer['width']) * 32) + ':' + str((i / layer['width']) * 32) + ' ')
+            f.write(str((idx % layer['width']) * 32) + ':' + str(int(idx / layer['width']) * 32) + ' ')
         else:
             f.write('None ')
 if (not found):
@@ -52,7 +53,7 @@ for layer in maprpg['layers']:
             if (layer['data'][i] != 0):
                 idx = i
         if (idx != -1):
-            f.write(str((i % layer['width']) * 32) + ':' + str((i / layer['width']) * 32) + ' ')
+            f.write(str((idx % layer['width']) * 32) + ':' + str(int(idx / layer['width']) * 32) + ' ')
         else:
             f.write('None ')
 if (not found):
@@ -67,7 +68,7 @@ for layer in maprpg['layers']:
             if (layer['data'][i] != 0):
                 idx = i
         if (idx != -1):
-            f.write(str((i % layer['width']) * 32) + ':' + str((i / layer['width']) * 32))
+            f.write(str((idx % layer['width']) * 32) + ':' + str(int(idx / layer['width']) * 32))
         else:
             f.write('None')
 if (not found):

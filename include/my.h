@@ -43,7 +43,7 @@
 
     void my_sort_int_array(int *tab, int size);
 
-    char *my_strcat(char *dest, char const *src);
+    char *my_strcat(char const *dest, char const *src);
 
     int my_strcmp(char const *s1, char const *s2);
 

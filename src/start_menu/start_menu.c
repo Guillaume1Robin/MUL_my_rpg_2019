@@ -7,11 +7,28 @@
 
 #include "rpg.h"
 
-smenu_t *create_menu(rpg_t *rpg)
+void set_menu_booleans(smenu_t *smenu)
+{
+    smenu->play_off.boulean_button = 0;
+    smenu->save_off.boulean_button = 0;
+    smenu->htp_off.boulean_button = 0;
+    smenu->quit_off.boulean_button = 0;
+    smenu->setting_off.boulean_button = 0;
+    smenu->plus_off.boulean_button = 0;
+    smenu->less_off.boulean_button = 0;
+    smenu->play_on.boulean_button = 0;
+    smenu->save_on.boulean_button = 0;
+    smenu->htp_on.boulean_button = 0;
+    smenu->quit_on.boulean_button = 0;
+    smenu->setting_on.boulean_button = 0;
+    smenu->plus_on.boulean_button = 0;
+    smenu->less_on.boulean_button = 0;
+}
+
+smenu_t *create_menu(void)
 {
     smenu_t *smenu = malloc(sizeof(smenu_t));
 
-    init_music(rpg);
     create_parallax(smenu);
     create_sprite_button_play_on(smenu);
     create_sprite_play_off(smenu);
@@ -21,14 +38,13 @@ smenu_t *create_menu(rpg_t *rpg)
     create_sprite_htp_off(smenu);
     create_sprite_button_quit_on(smenu);
     create_sprite_quit_off(smenu);
-    smenu->play_off.boulean_button = 0;
-    smenu->save_off.boulean_button = 0;
-    smenu->htp_off.boulean_button = 0;
-    smenu->quit_off.boulean_button = 0;
-     smenu->play_on.boulean_button = 0;
-    smenu->save_on.boulean_button = 0;
-    smenu->htp_on.boulean_button = 0;
-    smenu->quit_on.boulean_button = 0;
+    create_sprite_button_setting_on(smenu);
+    create_sprite_setting_off(smenu);
+    create_sprite_back_menu_pause(smenu);
+    create_sprite_button_plus_on(smenu);
+    create_sprite_plus_off(smenu);
+    create_sprite_button_less_on(smenu);
+    create_sprite_less_off(smenu);
     return (smenu);
 }
 
@@ -50,6 +66,10 @@ void display_button(smenu_t *smenu)
         sfRenderWindow_drawSprite(smenu->win, smenu->quit_on.sprite, NULL);
     else
         sfRenderWindow_drawSprite(smenu->win, smenu->quit_off.sprite, NULL);
+    if (smenu->setting_off.boulean_button == 0)
+        sfRenderWindow_drawSprite(smenu->win, smenu->setting_on.sprite, NULL);
+    else
+        sfRenderWindow_drawSprite(smenu->win, smenu->setting_off.sprite, NULL);
 }
 
 void menu_loop(rpg_t *rpg)
@@ -60,7 +80,7 @@ void menu_loop(rpg_t *rpg)
         update_button_save(rpg->smenu);
         update_button_quit(rpg, rpg->smenu);
         update_button_how_to_play(rpg->smenu);
-        change_volume(rpg);
+        update_button_setting(rpg);
     }
     move_parallax(rpg->smenu);
     sfRenderWindow_clear(rpg->smenu->win, sfBlack);
@@ -68,30 +88,6 @@ void menu_loop(rpg_t *rpg)
     display_button(rpg->smenu);
     sfRenderWindow_display(rpg->smenu->win);
 }
-
-// void start_menu(void)
-// {
-//     smenu_t *smenu = create_menu();
-//     sfVideoMode mode = {WIDTH, HEIGHT, 32};
-
-//     smenu->win = sfRenderWindow_create(mode, "RPG", sfClose, NULL);
-//     sfRenderWindow_setFramerateLimit(smenu->win, 60);
-//     while (sfRenderWindow_isOpen(smenu->win)) {
-//         while (sfRenderWindow_pollEvent(smenu->win, &smenu->event))
-//             open_close_events(&smenu->event, smenu->win);
-//         move_parallax(smenu);
-//         update_button_play(smenu);
-//         update_button_save(smenu);
-//         update_button_quit(smenu);
-//         update_button_how_to_play(smenu);
-//         sfRenderWindow_clear(smenu->win, sfBlack);
-//         sfRenderWindow_drawSprite(smenu->win, smenu->sky.sprite, NULL);
-//         draw_parallax(smenu);
-//         display_button(smenu);
-//         sfRenderWindow_display(smenu->win);
-//     }
-//     sfRenderWindow_destroy(smenu->win);
-// }
 
 // int main(void)
 // {

@@ -10,9 +10,7 @@
 
     #include "basic.h"
     #include "prototypes.h"
+    #include "defines.h"
     #include "my.h"
-
-    #define WIDTH 1920
-    #define HEIGHT 1080
 
 #endif

@@ -22,9 +22,10 @@ static void (*mv_fct[5])(rpg_t *) = {
 * Scenes or menus ? 
 * We can make pseudo-inheritance: scenes are some kind of menus but their functions will be malloc'ed
 */
-static void (*loop[2])(rpg_t *) = {
-    &menu_loop,
-    &game_loop,
+static void (*loop[])(rpg_t *) = {
+    [MENU] = &menu_loop,
+    [GAME] = &game_loop,
+    [SETTINGS] = &settings_loop,
 };
 
 /*
@@ -44,8 +45,10 @@ Got to figure out which events and functions are always played in a level and th
 */
 void game_loop(rpg_t *rpg)
 {
-    while (sfRenderWindow_pollEvent(rpg->window.window, rpg->event)) {
-        open_close_events(rpg, rpg->event, rpg->window.window);
+    if (rpg->cutscenes)
+        return (play_cutscene(rpg));
+    while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
+        open_close_events(rpg, &rpg->event, rpg->window);
         set_movement(rpg);
         change_volume(rpg);
     }
@@ -53,9 +56,9 @@ void game_loop(rpg_t *rpg)
         if (rpg->mv[i])
             mv_fct[i](rpg);
     }
-    sfSprite_setPosition(rpg->player.sprite, rpg->player.pos);
+    change_levels(rpg);
+    sfSprite_setPosition(rpg->player->sprite, rpg->player->pos);
     display(rpg);
-
 }
 
 /*
@@ -64,9 +67,8 @@ which scene we are on.
 */
 void main_loop(rpg_t *rpg)
 {
-    while (sfRenderWindow_isOpen(rpg->window.window)) {
+    while (sfRenderWindow_isOpen(rpg->window)) {
         sfMusic_setVolume(rpg->music, rpg->volume);
         loop[rpg->scene](rpg);
     }
-    sfRenderWindow_destroy(rpg->window.window);
 }

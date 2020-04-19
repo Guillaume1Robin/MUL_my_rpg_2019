@@ -7,16 +7,16 @@
 
 #include "rpg.h"
 
-char **check_line(int width, int height, char *line)
+char **check_line(int width, int height, char *ln)
 {
     char **sep_line = NULL;
 
-    for (int i = 0; line[i]; i++)
-        if ((line[i] < '0' || line[i] > '9') && line[i] != ' ') {
+    for (int i = 0; ln[i]; i++)
+        if ((ln[i] < '0' || ln[i] > '9') && ln[i] != ' ' && ln[i] != '\n') {
             write(2, "Invalid file\n", 13);
             return (NULL);
         }
-    sep_line = my_word_array(line);
+    sep_line = my_word_array(ln);
     if ((int)array_len(sep_line) != width * height) {
         free_array(sep_line);
         write(2, "Invalid file\n", 13);
@@ -94,8 +94,12 @@ int **fcollision_parser(FILE *file)
 int **collision_parser(char const *map_path)
 {
     FILE *file = fopen(map_path, "r");
-    int **tab = fcollision_parser(file);
+    int **tab = NULL;
 
+    if (!file) {
+        write(2, "Map file not found", 18);
+        return (NULL);
+    }
     fclose(file);
     return (tab);
 }
