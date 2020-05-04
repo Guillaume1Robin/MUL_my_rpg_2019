@@ -13,7 +13,7 @@ void clock_move_rect_player(rpg_t *rpg)
     float seconds = 0;
 
     seconds = sfTime_asSeconds(t);
-    if (seconds > 0.2) {
+    if (seconds > 0.18) {
         move_hrect(&rpg->player->rect, 32, 64);
         sfSprite_setTextureRect(rpg->player->sprite, rpg->player->rect);
         sfClock_restart(rpg->player->clock);

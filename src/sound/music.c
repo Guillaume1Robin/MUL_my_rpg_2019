@@ -10,7 +10,7 @@
 void init_music(rpg_t *rpg)
 {
     rpg->music = sfMusic_createFromFile("assets/sounds/sound_menu.ogg");
-    rpg->volume = 50.0;
+    rpg->volume = 15.0;
 }
 
 void play_music(rpg_t *rpg)

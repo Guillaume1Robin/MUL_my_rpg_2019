@@ -10,7 +10,9 @@
 void free_array(void *array)
 {
     void **arr = (void **)array;
-    for (int i = 0; arr[i]; i++)
+
+    for (int i = 0; array && arr[i]; i++)
         free(arr[i]);
-    free(array);
+    if (array)
+        free(array);
 }

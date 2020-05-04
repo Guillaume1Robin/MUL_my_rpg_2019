@@ -9,9 +9,14 @@
 
 void get_level_sprites_from_name(level_t *level, const char *name)
 {
-    char *texture_path = my_strcat(name, ".png");
-    char *ol_texture_path = my_strcat(name, "overlay.png");
+    char *path = "assets/maps/png/";
+    char *tmp1 = my_strcat(name, ".png");
+    char *tmp2 = my_strcat(name, "overlay.png");
+    char *texture_path = my_strcat(path, tmp1);
+    char *ol_texture_path = my_strcat(path, tmp2);
 
+    free(tmp1);
+    free(tmp2);
     level->texture = NULL;
     level->ol_texture = NULL;
     level->sprite = sfSprite_create();
@@ -28,12 +33,11 @@ void get_level_sprites_from_name(level_t *level, const char *name)
 
 void get_level_sprites_from_id(level_t *level, int id)
 {
-    char *path = "assets/maps/png/";
     char *id_str = my_itos(id);
     char *text_file = my_strcat(id_str, "map.png");
     char *ol_file = my_strcat(id_str, "overlaymap.png");
-    char *texture_path = my_strcat(path, text_file);
-    char *ol_texture_path = my_strcat(path, ol_file);
+    char *texture_path = my_strcat("assets/maps/png/", text_file);
+    char *ol_texture_path = my_strcat("assets/maps/png/", ol_file);
 
     level->sprite = sfSprite_create();
     level->ol_sprite = sfSprite_create();

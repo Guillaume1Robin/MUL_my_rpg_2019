@@ -8,8 +8,9 @@
 #ifndef DEFINES_H_
     #define DEFINES_H_
 
-    #define MAX_LEVEL 2
+    #define NB_LEVELS 10
     #define WIDTH 1920
     #define HEIGHT 1080
+    #define ABS(n) (n < 0 ? n * -1 : n)
 
 #endif

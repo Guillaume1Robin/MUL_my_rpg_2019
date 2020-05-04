@@ -20,11 +20,8 @@ char *my_strcat(char const *dest, const char *src)
 
     if (src == NULL)
         return (my_strdup(dest));
-    if (dest == NULL || dest[0] == 0) {
-        tmp = malloc(sizeof(char) * (my_strlen(src) + 1));
-        my_strcpy(tmp, src);
-        return (tmp);
-    }
+    if (dest == NULL || dest[0] == 0)
+        return (my_strdup(src));
     tmp = malloc(sizeof(char) * (my_strlen(src) + my_strlen(dest) + 1));
     for (; dest[i]; i++)
         tmp[i] = dest[i];

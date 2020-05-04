@@ -10,14 +10,17 @@
 int main(void)
 {
     rpg_t *rpg = malloc(sizeof(rpg_t));
+    sfImage *icon = sfImage_createFromFile("assets/sprites/title.png");
+    sfVector2u size = sfImage_getSize(icon);
+    const sfUint8 *pxptr = sfImage_getPixelsPtr(icon);
 
-    rpg->levels = create_game_layout(MAX_LEVEL - 1);
-    init_music(rpg);
-    if (!initialize_value_struct(rpg)) {
-        create(rpg);
+    if (init_rpg(rpg)) {
+        if (icon)
+            sfRenderWindow_setIcon(rpg->window, size.x, size.y, pxptr);
         play_music(rpg);
         main_loop(rpg);
         destroy_rpg(rpg);
+        sfImage_destroy(icon);
         free(rpg);
         return (0);
     }

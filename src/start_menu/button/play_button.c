@@ -57,6 +57,7 @@ void update_button_play(smenu_t *sm, rpg_t *rpg)
     if (sfFloatRect_contains(&play_rect, (float)mp.x, (float)mp.y)) {
         sm->play_off.boulean_button = 1;
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
+            rpg->prev_scene = rpg->scene;
             rpg->scene = GAME;
             rpg->game_clock = sfClock_create();
         }

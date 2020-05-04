@@ -7,20 +7,26 @@
 
 #include "rpg.h"
 
-void text_cutscene(rpg_t *rpg, float seconds)
+int create_softest(rpg_t *rpg)
 {
-    char *text1 = "Throw something into the foutain to buy gear";
-    char *text2 = "This will allow you to defeat the monsters";
-    char *text3 = "and to save your son from their claws!";
+    char *path_to_lama = "assets/sprites/softest.png";
 
-    if (seconds > 2)
-        sfText_setString(rpg->text.stc, "You must find him before trouble!");
-    if (seconds > 4)
-        sfText_setString(rpg->text.stc, text1);
-    if (seconds > 6)
-        sfText_setString(rpg->text.stc, text2);
-    if (seconds > 8)
-        sfText_setString(rpg->text.stc, text3);
+    rpg->softest = malloc(sizeof(lama_t));
+    rpg->softest->texture = sfTexture_createFromFile(path_to_lama, NULL);
+    if (!rpg->softest->texture) {
+        write(2, "softest spritesheet not found\n", 29);
+        return (84);
+    }
+    rpg->softest->sprite = sfSprite_create();
+    sfSprite_setScale(rpg->softest->sprite, (sfVector2f){2, 2});
+    sfSprite_setTexture(rpg->softest->sprite, rpg->softest->texture, sfTrue);
+    rpg->softest->pos.x = 960;
+    rpg->softest->pos.y = -50;
+    rpg->softest->size.x = 1.3;
+    rpg->softest->size.y = 1.3;
+    sfSprite_setScale(rpg->softest->sprite, rpg->softest->size);
+    sfSprite_setPosition(rpg->softest->sprite, rpg->softest->pos);
+    return (0);
 }
 
 void start_cutscene(rpg_t *rpg)
@@ -28,7 +34,7 @@ void start_cutscene(rpg_t *rpg)
     sfTime time = sfClock_getElapsedTime(rpg->game_clock);
     float seconds = sfTime_asSeconds(time);
 
-    text_cutscene(rpg, seconds);
+    start_text(rpg, seconds);
     if (seconds < 1.5)
         return (move_player_right(rpg));
     if (seconds < 2)
@@ -37,23 +43,46 @@ void start_cutscene(rpg_t *rpg)
         return (move_player_up(rpg));
     if (seconds < 3)
         return (move_player_right(rpg));
-    if (seconds > 10)
+    if (seconds > 8)
         rpg->cutscenes = sfFalse;
 }
 
 void end_cutscene(rpg_t *rpg)
 {
-    rpg->cutscenes = sfFalse;
+    float sec = sfTime_asSeconds(sfClock_getElapsedTime(rpg->game_clock));
+
+    end_text(rpg, sec);
+    if (sec < 1)
+        move_player_right(rpg);
+    if (sec > 6)
+        rpg->cutscenes = sfFalse;
+}
+
+void final_cutscene(rpg_t *rpg)
+{
+    float sec = sfTime_asSeconds(sfClock_getElapsedTime(rpg->game_clock));
+
+    final_text(rpg, sec);
+    rpg->softest->pos.y += rpg->softest->pos.y > HEIGHT / 2 ? 0 : 2;
+    if (sec > 8) {
+        rpg->cutscenes = sfFalse;
+        rpg->scene = END;
+        rpg->softest->pos.x = 960;
+        rpg->softest->pos.y = -50;
+    }
 }
 
 void play_cutscene(rpg_t *rpg)
 {
+    while (sfRenderWindow_pollEvent(rpg->window, &rpg->event))
+        cutscene_events(rpg);
     if (rpg->lvl == 0) {
         start_cutscene(rpg);
-    } else if (rpg->lvl == MAX_LEVEL)
+    } else if (rpg->lvl == 6 && !rpg->game_end)
         end_cutscene(rpg);
-    else
-        rpg->cutscenes = sfFalse;
+    if (rpg->lvl == 6 && rpg->game_end)
+        final_cutscene(rpg);
     sfSprite_setPosition(rpg->player->sprite, rpg->player->pos);
+    sfSprite_setPosition(rpg->softest->sprite, rpg->softest->pos);
     display(rpg);
 }

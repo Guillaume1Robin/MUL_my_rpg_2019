@@ -16,6 +16,7 @@ int create_sprite_button_less_on(smenu_t *sm)
         write(2, "error missing the button\n", 26);
         return (84);
     }
+    sm->less_on.boulean_button = true;
     sm->less_on.sprite = sfSprite_create();
     sfSprite_setTexture(sm->less_on.sprite, sm->less_on.texture, sfTrue);
     sm->less_on.pos.x = 600;
@@ -37,6 +38,7 @@ int create_sprite_less_off(smenu_t *sm)
         write(2, "error missing the button\n", 26);
         return (84);
     }
+    sm->less_off.boulean_button = false;
     sm->less_off.sprite = sfSprite_create();
     sfSprite_setTexture(sm->less_off.sprite, sm->less_off.texture, sfTrue);
     sm->less_off.pos.x = 580;

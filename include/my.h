@@ -85,4 +85,6 @@
 
     void free_array(void *array);
 
+    void *ptr_message(char const *mess, void *ptr, int fd, void *to_free);
+
 #endif /*MY_H_ */

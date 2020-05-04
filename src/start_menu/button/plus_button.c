@@ -7,7 +7,6 @@
 
 #include "rpg.h"
 
-
 int create_sprite_button_plus_on(smenu_t *sm)
 {
     char *path_to_button = "assets/buttons/plus_on.png";
@@ -17,6 +16,7 @@ int create_sprite_button_plus_on(smenu_t *sm)
         write(2, "error missing the button\n", 26);
         return (84);
     }
+    sm->plus_on.boulean_button = true;
     sm->plus_on.sprite = sfSprite_create();
     sfSprite_setTexture(sm->plus_on.sprite, sm->plus_on.texture, sfTrue);
     sm->plus_on.pos.x = 900;
@@ -38,6 +38,7 @@ int create_sprite_plus_off(smenu_t *sm)
         write(2, "error missing the button\n", 26);
         return (84);
     }
+    sm->plus_off.boulean_button = false;
     sm->plus_off.sprite = sfSprite_create();
     sfSprite_setTexture(sm->plus_off.sprite, sm->plus_off.texture, sfTrue);
     sm->plus_off.pos.x = 880;

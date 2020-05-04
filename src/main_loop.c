@@ -7,25 +7,16 @@
 
 #include "rpg.h"
 
-/*
-* function pointers table for player movement
-*/
-static void (*mv_fct[5])(rpg_t *) = {
-    &move_player_up,
-    &move_player_down,
-    &move_player_left,
-    &move_player_right,
-    &stay_still,
-};
-
-/*
-* Scenes or menus ? 
-* We can make pseudo-inheritance: scenes are some kind of menus but their functions will be malloc'ed
-*/
 static void (*loop[])(rpg_t *) = {
     [MENU] = &menu_loop,
     [GAME] = &game_loop,
     [SETTINGS] = &settings_loop,
+    [INVENTORY] = &inventory_loop,
+    [MERCHANT] = &merchant_loop,
+    [PAUSE] = &pause_menu_loop,
+    [HTP] = &htp_loop,
+    [END] = &end_loop,
+    [NPC] = &npc_loop,
 };
 
 /*
@@ -48,23 +39,11 @@ void game_loop(rpg_t *rpg)
     if (rpg->cutscenes)
         return (play_cutscene(rpg));
     while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
-        open_close_events(rpg, &rpg->event, rpg->window);
-        set_movement(rpg);
-        change_volume(rpg);
+        game_events(rpg);
     }
-    for (int i = 0; i < 5; i++) {
-        if (rpg->mv[i])
-            mv_fct[i](rpg);
-    }
-    change_levels(rpg);
-    sfSprite_setPosition(rpg->player->sprite, rpg->player->pos);
-    display(rpg);
+    update_game(rpg);
 }
 
-/*
-* Plays which loop we are on,
-which scene we are on.
-*/
 void main_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window)) {

@@ -38,7 +38,8 @@ int create_sprite_setting_off(smenu_t *sm)
         return (84);
     }
     sm->setting_off.sprite = sfSprite_create();
-    sfSprite_setTexture(sm->setting_off.sprite, sm->setting_off.texture, sfTrue);
+    sfSprite_setTexture(sm->setting_off.sprite, sm->setting_off.texture\
+, sfTrue);
     sm->setting_off.pos.x = 10;
     sm->setting_off.pos.y = 10;
     sfSprite_setPosition(sm->setting_off.sprite, sm->setting_off.pos);
@@ -56,8 +57,10 @@ void update_button_setting(rpg_t *rpg)
 
     if (sfFloatRect_contains(&rect, (float)mp.x, (float)mp.y)) {
         rpg->smenu->setting_off.boulean_button = 1;
-        if (sfMouse_isButtonPressed(sfMouseLeft))
+        if (sfMouse_isButtonPressed(sfMouseLeft)) {
+            rpg->prev_scene = rpg->scene;
             rpg->scene = SETTINGS;
+        }
     } else
         rpg->smenu->setting_off.boulean_button = 0;
 }

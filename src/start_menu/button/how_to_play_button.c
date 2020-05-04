@@ -19,7 +19,7 @@ int create_sprite_button_htp_on(smenu_t *sm)
     sfSprite_setTexture(sm->htp_on.sprite, \
     sm->htp_on.texture, sfTrue);
     sm->htp_on.pos.x = 850;
-    sm->htp_on.pos.y = 650;
+    sm->htp_on.pos.y = 500;
     sfSprite_setPosition(sm->htp_on.sprite, \
     sm->htp_on.pos);
     sm->htp_on.rect.top = 0;
@@ -41,7 +41,7 @@ int create_sprite_htp_off(smenu_t *sm)
     sfSprite_setTexture(sm->htp_off.sprite, \
     sm->htp_off.texture, sfTrue);
     sm->htp_off.pos.x = 830;
-    sm->htp_off.pos.y = 640;
+    sm->htp_off.pos.y = 490;
     sfSprite_setPosition(sm->htp_off.sprite, \
     sm->htp_off.pos);
     sm->htp_off.rect.top = 0;
@@ -51,14 +51,18 @@ int create_sprite_htp_off(smenu_t *sm)
     return (0);
 }
 
-void update_button_how_to_play(smenu_t *sm)
+void update_button_how_to_play(rpg_t *rpg)
 {
-    sfVector2i mp = sfMouse_getPositionRenderWindow(sm->win);
-    sfFloatRect htp_rect = sfSprite_getGlobalBounds(sm->htp_on.sprite);
+    sfVector2i mp = sfMouse_getPositionRenderWindow(rpg->smenu->win);
+    sfFloatRect htp_rect = sfSprite_getGlobalBounds(rpg->smenu->htp_on.sprite);
 
     if (sfFloatRect_contains(&htp_rect, mp.x, mp.y)) {
-        sm->htp_off.boulean_button = 1;
+        rpg->smenu->htp_off.boulean_button = 1;
+        if (sfMouse_isButtonPressed(sfMouseLeft)) {
+            rpg->prev_scene = rpg->scene;
+            rpg->scene = HTP;
+        }
     }
     else
-        sm->htp_off.boulean_button = 0;
+        rpg->smenu->htp_off.boulean_button = 0;
 }
